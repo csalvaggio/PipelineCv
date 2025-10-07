@@ -1,135 +1,68 @@
-#---------------------------#
-# Project identity
-#---------------------------#
-PROJECT_NAME           = "pcv / Pipeline OpenCV (PipelineCv)"
-PROJECT_BRIEF          = "C++ functional-style image processing utilities (pipes) built on OpenCV"
-PROJECT_NUMBER         =
-OUTPUT_DIRECTORY       = docs
-CREATE_SUBDIRS         = NO
+# Doxyfile minimum for README.md as main page
 
-#---------------------------#
-# Build control
-#---------------------------#
-QUIET                  = NO
-WARNINGS               = YES
-WARN_IF_UNDOCUMENTED   = YES
-WARN_IF_DOC_ERROR      = YES
-WARN_LOGFILE           = docs/doxygen_warnings.log
+# --- Project ---
+PROJECT_NAME           = "PipelineCv"
+PROJECT_BRIEF          = "Tiny functional pipelines for OpenCV images"
+PROJECT_NUMBER         = 0.1.0
+
+# --- Inputs & parsing ---
+INPUT                  = ./include ./README.md ./PipelineCv.dox
+FILE_PATTERNS          = *.h *.hpp *.md *.dox
+RECURSIVE              = YES
+
+# Extractions
 EXTRACT_ALL            = YES
-EXTRACT_PRIVATE        = YES
+EXTRACT_PRIVATE        = NO
 EXTRACT_STATIC         = YES
 EXTRACT_LOCAL_CLASSES  = YES
 EXTRACT_ANON_NSPACES   = YES
-HIDE_UNDOC_MEMBERS     = NO
-HIDE_UNDOC_CLASSES     = NO
 
-#---------------------------#
-# Input
-#---------------------------#
-# Point to your public headers and your .dox main/group pages
-INPUT                  = include PipelineCv.dox
-RECURSIVE              = YES
-FILE_PATTERNS          = *.h *.hpp *.dox
-EXTENSION_MAPPING      = h=C++ hpp=C++
-INPUT_FILTER           =
-FILTER_PATTERNS        =
-EXCLUDE                =
-EXCLUDE_SYMLINKS       = NO
-
-# If you use standard Doxygen/Javadoc style briefs:
-JAVADOC_AUTOBRIEF      = YES
-MULTILINE_CPP_IS_BRIEF = YES
-
-#---------------------------#
-# Indexing / navigation
-#---------------------------#
-DISABLE_INDEX          = NO
-ALPHABETICAL_INDEX     = YES
-GENERATE_TREEVIEW      = YES
-FULL_PATH_NAMES        = YES
+# Paths
+FULL_PATH_NAMES        = NO
 STRIP_FROM_PATH        = .
-TAB_SIZE               = 4
 
-# Sorting makes the output predictable and tidy
-SORT_MEMBER_DOCS       = YES
-SORT_BRIEF_DOCS        = YES
-SORT_BY_SCOPE_NAME     = YES
-MEMBER_GROUPING        = YES
-SHOW_DIRECTORIES       = YES
-SHOW_FILES             = YES
-SHOW_NAMESPACES        = YES
+# Output
+OUTPUT_DIRECTORY       = docs
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_LATEX         = NO
+GENERATE_TREEVIEW      = YES
+HTML_TIMESTAMP         = NO
 
-#---------------------------#
-# Source browser
-#---------------------------#
+# Warnings (nice while bringing docs online)
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = NO
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = NO
+
+# Source browser (optional)
 SOURCE_BROWSER         = YES
-INLINE_SOURCES         = YES
-STRIP_CODE_COMMENTS    = NO
+INLINE_SOURCES         = NO
 REFERENCED_BY_RELATION = YES
 REFERENCES_RELATION    = YES
 
-#---------------------------#
-# Preprocessor (optional)
-#---------------------------#
+# Indexing & sorting
+ALPHABETICAL_INDEX     = YES
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = YES
+SORT_MEMBERS_CTORS_1ST = YES
+
+# Preprocessor
 ENABLE_PREPROCESSING   = YES
 MACRO_EXPANSION        = NO
 EXPAND_ONLY_PREDEF     = NO
-PREDEFINED             =
-INCLUDE_PATH           =
-INCLUDE_FILE_PATTERNS  =
 
-#---------------------------#
-# HTML output
-#---------------------------#
-GENERATE_HTML          = YES
-HTML_OUTPUT            = html
-HTML_FILE_EXTENSION    = .html
-HTML_COLORSTYLE_HUE    = 220
-DISABLE_INDEX          = NO
-GENERATE_DOCSET        = NO
-HTML_DYNAMIC_MENUS     = YES
-SEARCHENGINE           = YES
+# --- Markdown / main page ---
+MARKDOWN_SUPPORT       = YES
+EXTENSION_MAPPING      = md=markdown
+AUTOLINK_SUPPORT       = YES
+USE_MDFILE_AS_MAINPAGE = README.md
 
-#---------------------------#
-# Diagrams / Graphviz (optional but nice)
-#---------------------------#
-HAVE_DOT               = YES
-DOT_IMAGE_FORMAT       = svg
-DOT_MULTI_TARGETS      = YES
-CALL_GRAPH             = YES
-CALLER_GRAPH           = YES
+# Diagrams (enable if you have dot/graphviz installed)
+HAVE_DOT               = NO
+CALL_GRAPH             = NO
+CALLER_GRAPH           = NO
 DOT_TRANSPARENT        = YES
-INTERACTIVE_SVG        = YES
 
-#---------------------------#
-# LaTeX / XML / Man (disabled here)
-#---------------------------#
-GENERATE_LATEX         = NO
-GENERATE_XML           = NO
-GENERATE_MAN           = NO
-GENERATE_RTF           = NO
-
-#---------------------------#
-# Warnings fine-tuning
-#---------------------------#
-WARN_NO_PARAMDOC       = NO
-WARN_FORMAT            = "$file:$line: $text"
-
-#---------------------------#
-# Extraction scope details
-#---------------------------#
-# If you want only documented API to appear, keep EXTRACT_ALL=NO above.
-# Toggle these if you need more:
-EXTRACT_PACKAGE        = NO
-EXTRACT_PRIV_VIRTUAL   = NO
-EXTRACT_LOCAL_METHODS  = NO
-
-#---------------------------#
-# Groups / pages (behavior)
-#---------------------------#
-# Your PipelineCv.dox should define:
-#   \defgroup pcv_funcs "PipelineCv Function Reference"
-# Then, in PipelineCv.h add \ingroup pcv_funcs to each function you want listed.
-GROUP_GRAPHS           = YES
-DISTRIBUTE_GROUP_DOC   = YES
-GROUP_NESTED_COMPOUNDS = YES
+# Search (client-side)
+SEARCHENGINE           = YES

@@ -1,108 +1,44 @@
-/*! \file pcv_pipes.dox
-\brief Documentation entry point and module page for the pcv pipe adapters.
-*/
+/*! \page pipelinecv_overview PipelineCv – API Overview
+\tableofcontents
 
-/*! \mainpage pcv: Functional Pipes for OpenCV
+\section intro Introduction
+PipelineCv provides a few lightweight adapters that let you compose
+OpenCV image operations using the C++ pipe operator syntax.
 
-\section intro_sec Overview
-The **pcv** adapters provide a tiny, header-only toolkit for composing
-OpenCV `cv::Mat` transforms using a functional _pipe_ style:
-
+\section headers Headers
+Include the primary header:
 \code{.cpp}
-cv::Mat img = cv::imread("in.png", cv::IMREAD_COLOR);
+#include <pcv/PipelineCv.h>
+\endcode
 
+\section adapters Adapters Catalog
+Below are common adapters. Click through for signatures and details:
+
+- \ref pcv::to_float
+- \ref pcv::to_gray
+- \ref pcv::pad_to_even
+- \ref pcv::to_complex
+- \ref pcv::dft
+- \ref pcv::fft_shift
+- \ref pcv::magnitude
+- \ref pcv::power_spectrum
+- \ref pcv::add
+
+\section examples Examples
+\code{.cpp}
 cv::Mat spectrum = img
-  | pcv::to_float()         // convert to CV_32F in [0,1]
-  | pcv::to_gray()          // grayscale
-  | pcv::pad_to_even()      // FFT-friendly sizes
-  | pcv::dft()              // two-channel complex DFT
-  | pcv::fft_shift()        // center DC
-  | pcv::power_spectrum();  // |F|^2 (log)
+  | pcv::to_float()
+  | pcv::to_gray()
+  | pcv::pad_to_even()
+  | pcv::dft()
+  | pcv::fft_shift()
+  | pcv::power_spectrum();
 \endcode
 
-All adapters are inline and header-only.
+\section notes Notes
+- Prefer even image dimensions before FFTs (see \ref pcv::pad_to_even).
+- When chaining, ensure each adapter’s input type matches its expectation.
 
-\section build_sec Build & Include
-- Requires OpenCV (core/imgproc).  
-- Include the header where you build your pipeline:
-
-\code{.cpp}
-#include "PipelineCv.h"
-\endcode
-
-\section modules_sec Modules
-- \ref pcv_pipes "pcv::pipes" — functional adapters and helpers.
-
-\section examples_sec Quick Examples
-
-\subsection ex_range Normalize & Clamp
-\code{.cpp}
-cv::Mat out = img | pcv::to_float() | pcv::normalize(0.0, 1.0) | pcv::clamp(0.0, 1.0);
-\endcode
-
-\subsection ex_complex Complex Conjugate & Magnitude
-\code{.cpp}
-cv::Mat mag = img | pcv::to_float() | pcv::to_gray() | pcv::to_complex() | pcv::dft() | pcv::magnitude();
-\endcode
-
-\subsection ex_blend Affine Blend
-\code{.cpp}
-cv::Mat blended = img | pcv::add(other, alpha=1.0, beta=0.7, gamma=0.0);
-\endcode
-
-\section notes_sec Notes
-- The pipe operator accepts any callable with signature `cv::Mat(const cv::Mat&)`.
-- Helpers that expect complex data require 2-channel inputs (`CV_32FC2`/`CV_64FC2`).
-- For FFT visualization, prefer even dimensions (\ref pcv::pad_to_even()) and
-  center DC with \ref pcv::fft_shift().
+\section links Related
+Return to the main page for build and usage instructions.
 */
-
-/** \defgroup type_and_channel_adapters Type and Channel Adapters
- *  \brief Functions related to type conversions and channel extraction/combination.
- */
-
-/** \defgroup scalar_value_transforms Scalar/Value Transforms
- *  \brief Functions for scalar/value transformations and per-pixel value operations.
- */
-
-/** \defgroup elementwise_operations Element-wise Arithmetic Operations
- *  \brief Functions for performing element-wise mathematical operations between two cv:Mats.
- */
-
-/** \defgroup complex_domain_operations Complex-Domain Operations
- *  \brief Functions for performing element-wise complex-domain operations.
- */
-
-/** \defgroup fourier_frequency_domain_utilities Fourier/Frequency-Domain Utilities
- *  \brief Fourier and frequency domain utility functions.
- */
-
-/** \defgroup spatial_utilities Spatial Utilities
- *  \brief Spatial utilitiies for geometrically modifying cv::Mats.
- */
-
-/**
- * This module groups the pipe operator and all adapters. Typical usage:
- * 
- * \code{.cpp}
- * using namespace pcv;
- * 
- * cv::Mat out = src
- *  | pcv::to_float(1.0/255.0)
- *  | pcv::to_gray()
- *  | pcv::normalize(0.0, 1.0)
- *  | pcv::multiply_scalar(2.0)
- *  | pcv::clamp(0.0, 1.0)
- *  | pcv::to_uint8();
- * \endcode
- *
- * \par Error Handling
- * Most adapters use `CV_Assert` for precondition checks (e.g., complex inputs must
- * have 2 channels). Doxygen will link to each function for precise requirements.
- * 
- * \par Performance Tips
- * - Prefer `CV_32F` for frequency operations; convert once, process, then convert back.
- * - Use `pcv::pad_to_even()` before `pcv::dft()` for clean quadrant swaps with `pcv::fft_shift()`.
- * - Compose operations to minimize intermediate copies when practical.
-*/
-
