@@ -1,9 +1,6 @@
 var namespaces_dup =
 [
     [ "pcv", "namespacepcv.html", [
-      [ "Author", "index.html#autotoc_md13", null ],
-      [ "E-mail", "index.html#autotoc_md14", null ],
-      [ "Organization", "index.html#autotoc_md15", null ],
       [ "add", "group__elementwise__operations.html#gaedc43d4473bb033c7f6761be3be2f19b", null ],
       [ "add_scalar", "group__scalar__value__transforms.html#ga594753cd4f34c479fea5018ec6176936", null ],
       [ "clamp", "group__scalar__value__transforms.html#ga1ac8fd4e79e9f8b80aad59207541c7a7", null ],

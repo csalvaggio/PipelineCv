@@ -26,19 +26,19 @@ var NAVTREE =
 [
   [ "pcv / Pipeline OpenCV (PipelineCv)", "index.html", [
     [ "PipelineCv - A pipeline OpenCV adapter library", "index.html", [
-      [ "DESCRIPTION", "index.html#autotoc_md0", null ],
-      [ "BUILD & INCLUDE", "index.html#autotoc_md1", null ],
-      [ "TESTING", "index.html#autotoc_md2", null ],
-      [ "QUICK EXAMPLES", "index.html#autotoc_md3", [
-        [ "Normalize and Clamp", "index.html#autotoc_md4", null ],
-        [ "Fourier Transform & Magnitude", "index.html#autotoc_md5", null ],
-        [ "Affine Blend", "index.html#autotoc_md6", null ]
+      [ "Overview", "index.html#intro_sec", null ],
+      [ "Build & Include", "index.html#build_sec", null ],
+      [ "Testing", "index.html#testing_sec", null ],
+      [ "Quick Examples", "index.html#examples_sec", [
+        [ "Normalize and Clamp", "index.html#ex_normalize", null ],
+        [ "Fourier Transform & Magnitude", "index.html#ex_fourier", null ],
+        [ "Affine Blend", "index.html#ex_blend", null ]
       ] ],
-      [ "API REFERENCE", "index.html#autotoc_md7", null ],
-      [ "NOTES", "index.html#autotoc_md8", null ],
-      [ "ERROR HANDLING", "index.html#autotoc_md9", null ],
-      [ "PERFORMANCE TIPS", "index.html#autotoc_md10", null ],
-      [ "Contact", "index.html#autotoc_md12", null ]
+      [ "API Reference", "index.html#api_sec", null ],
+      [ "Notes", "index.html#notes_sec", null ],
+      [ "Error Handling", "index.html#error_sec", null ],
+      [ "Performance Tips", "index.html#perf_sec", null ],
+      [ "Contact", "index.html#contact_sec", null ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [

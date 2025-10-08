@@ -27,17 +27,14 @@ HIDE_UNDOC_CLASSES     = NO
 # Input
 #---------------------------#
 # Point to your public headers and your .dox main/group pages
-INPUT                  = include README.md PipelineCv.dox
+INPUT                  = include PipelineCv.dox
 RECURSIVE              = YES
-FILE_PATTERNS          = *.h *.hpp *.dox *.md
+FILE_PATTERNS          = *.h *.hpp *.dox
 EXTENSION_MAPPING      = h=C++ hpp=C++
 INPUT_FILTER           =
 FILTER_PATTERNS        =
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
-
-# Enable Markdown support
-USE_MDFILE_AS_MAINPAGE = README.md
 
 # If you use standard Doxygen/Javadoc style briefs:
 JAVADOC_AUTOBRIEF      = YES
