@@ -27,17 +27,16 @@ var NAVTREE =
   [ "pcv / Pipeline OpenCV (PipelineCv)", "index.html", [
     [ "PipelineCv - A pipeline OpenCV adapter library", "index.html", [
       [ "Overview", "index.html#intro_sec", null ],
-      [ "Build & Include", "index.html#build_sec", null ],
-      [ "Testing", "index.html#testing_sec", null ],
-      [ "Quick Examples", "index.html#examples_sec", [
-        [ "Normalize and Clamp", "index.html#ex_normalize", null ],
-        [ "Fourier Transform & Magnitude", "index.html#ex_fourier", null ],
-        [ "Affine Blend", "index.html#ex_blend", null ]
-      ] ],
-      [ "API Reference", "index.html#api_sec", null ],
+      [ "Requirements", "index.html#requirements", null ],
+      [ "Installation", "index.html#installation", null ],
       [ "Notes", "index.html#notes_sec", null ],
       [ "Error Handling", "index.html#error_sec", null ],
       [ "Performance Tips", "index.html#perf_sec", null ],
+      [ "Quick Examples", "index.html#examples_sec", [
+        [ "Normalize and Clamp", "index.html#ex_normalize", null ],
+        [ "Fourier Transform & Magnitude", "index.html#ex_fourier", null ],
+        [ "Image Blend", "index.html#ex_blend", null ]
+      ] ],
       [ "Contact", "index.html#contact_sec", null ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
