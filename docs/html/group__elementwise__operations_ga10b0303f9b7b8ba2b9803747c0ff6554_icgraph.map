@@ -1,0 +1,4 @@
+<map id="pcv::multiply" name="pcv::multiply">
+<area shape="rect" id="node1" title="Element&#45;wise multiplication with optional scale." alt="" coords="199,5,293,32"/>
+<area shape="rect" id="node2" href="$group__complex__domain__operations.html#ga1e4de76aa8b71940aec85c35d6c52649" title="Power spectrum |F|^2 for complex images, optionally log scaled." alt="" coords="5,5,151,32"/>
+</map>

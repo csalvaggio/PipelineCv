@@ -1,0 +1,5 @@
+<map id="pcv::subtract" name="pcv::subtract">
+<area shape="rect" id="node1" title="Element&#45;wise subtraction: in &#45; other, with optional scaling." alt="" coords="192,31,289,57"/>
+<area shape="rect" id="node2" href="$group__complex__domain__operations.html#ga67cab92dfc172ec1f057dc0f9e185ac4" title="Phase/angle of a 2&#45;channel complex image in (&#45;π, π]." alt="" coords="32,5,117,32"/>
+<area shape="rect" id="node3" href="$group__scalar__value__transforms.html#ga1dada47d27a6562b1bad6eb8a39495df" title="Subtract a scalar value from all pixels." alt="" coords="5,56,144,83"/>
+</map>

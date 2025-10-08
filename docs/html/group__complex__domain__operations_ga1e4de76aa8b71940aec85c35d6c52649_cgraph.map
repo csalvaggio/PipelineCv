@@ -1,0 +1,5 @@
+<map id="pcv::power_spectrum" name="pcv::power_spectrum">
+<area shape="rect" id="node1" title="Power spectrum |F|^2 for complex images, optionally log scaled." alt="" coords="5,31,151,57"/>
+<area shape="rect" id="node2" href="$group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004" title="Natural logarithm of (in + 1)." alt="" coords="213,5,279,32"/>
+<area shape="rect" id="node3" href="$group__elementwise__operations.html#ga10b0303f9b7b8ba2b9803747c0ff6554" title="Element&#45;wise multiplication with optional scale." alt="" coords="199,56,293,83"/>
+</map>

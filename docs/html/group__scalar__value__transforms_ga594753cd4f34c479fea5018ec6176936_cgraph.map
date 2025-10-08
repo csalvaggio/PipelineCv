@@ -1,0 +1,4 @@
+<map id="pcv::add_scalar" name="pcv::add_scalar">
+<area shape="rect" id="node1" title="Add a scalar value to all pixels." alt="" coords="5,5,119,32"/>
+<area shape="rect" id="node2" href="$group__elementwise__operations.html#gaedc43d4473bb033c7f6761be3be2f19b" title="Weighted sum: alpha * in + beta * other + gamma." alt="" coords="167,5,237,32"/>
+</map>

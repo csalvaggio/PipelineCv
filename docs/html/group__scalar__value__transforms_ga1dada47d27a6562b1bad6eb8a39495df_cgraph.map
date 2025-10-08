@@ -1,0 +1,4 @@
+<map id="pcv::subtract_scalar" name="pcv::subtract_scalar">
+<area shape="rect" id="node1" title="Subtract a scalar value from all pixels." alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node2" href="$group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6" title="Element&#45;wise subtraction: in &#45; other, with optional scaling." alt="" coords="192,5,289,32"/>
+</map>

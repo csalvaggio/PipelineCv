@@ -1,44 +1,34 @@
-/*! \page pipelinecv_overview PipelineCv – API Overview
-\tableofcontents
+/**
+ * @file PipelineCv.dox
+ * @brief Documentation groups and module definitions for pcv pipe adapters.
+ */
 
-\section intro Introduction
-PipelineCv provides a few lightweight adapters that let you compose
-OpenCV image operations using the C++ pipe operator syntax.
+/** 
+ * @defgroup type_and_channel_adapters Type and Channel Adapters
+ * @brief Functions related to type conversions and channel extraction/combination.
+ */
 
-\section headers Headers
-Include the primary header:
-\code{.cpp}
-#include <pcv/PipelineCv.h>
-\endcode
+/** 
+ * @defgroup scalar_value_transforms Scalar/Value Transforms
+ * @brief Functions for scalar/value transformations and per-pixel value operations.
+ */
 
-\section adapters Adapters Catalog
-Below are common adapters. Click through for signatures and details:
+/** 
+ * @defgroup elementwise_operations Element-wise Arithmetic Operations
+ * @brief Functions for performing element-wise mathematical operations between two cv::Mats.
+ */
 
-- \ref pcv::to_float
-- \ref pcv::to_gray
-- \ref pcv::pad_to_even
-- \ref pcv::to_complex
-- \ref pcv::dft
-- \ref pcv::fft_shift
-- \ref pcv::magnitude
-- \ref pcv::power_spectrum
-- \ref pcv::add
+/** 
+ * @defgroup complex_domain_operations Complex-Domain Operations
+ * @brief Functions for performing element-wise complex-domain operations.
+ */
 
-\section examples Examples
-\code{.cpp}
-cv::Mat spectrum = img
-  | pcv::to_float()
-  | pcv::to_gray()
-  | pcv::pad_to_even()
-  | pcv::dft()
-  | pcv::fft_shift()
-  | pcv::power_spectrum();
-\endcode
+/** 
+ * @defgroup fourier_frequency_domain_utilities Fourier/Frequency-Domain Utilities
+ * @brief Fourier and frequency domain utility functions.
+ */
 
-\section notes Notes
-- Prefer even image dimensions before FFTs (see \ref pcv::pad_to_even).
-- When chaining, ensure each adapter’s input type matches its expectation.
-
-\section links Related
-Return to the main page for build and usage instructions.
-*/
+/** 
+ * @defgroup spatial_utilities Spatial Utilities
+ * @brief Spatial utilities for geometrically modifying cv::Mats.
+ */
