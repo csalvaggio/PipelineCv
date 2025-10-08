@@ -33,7 +33,12 @@ PipelineCv is header-only. Simply include it in your project (for example):
 
 ## Documentation
 
-See the generated Doxygen documentation for complete [API reference](https://home.cis.rit.edu/~cnspci/other/apis/pcv/).
+To generate the Doxygen documentation locally:
+```
+doxygen Doxyfile
+```
+
+See the online documentation for complete [API reference](https://home.cis.rit.edu/~cnspci/other/apis/pcv/).
 
 ## Error Handling
 
