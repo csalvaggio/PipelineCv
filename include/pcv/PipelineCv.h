@@ -29,9 +29,8 @@
  */
 
 #include <functional>
-#include <vector>
-
 #include <opencv2/opencv.hpp>
+#include <vector>
 
 namespace pcv {
 
@@ -680,6 +679,96 @@ inline auto roll(int shift_rows, int shift_cols) {
   };
 }
 
+/**
+ * @brief Affine warp defined by rotation (deg), scale, and translations.
+ *
+ * Builds a 2×3 matrix via `cv::getRotationMatrix2D(center, angle_degrees,
+ * scale)` about the input image center, then adds translations (tx, ty)
+ * in pixels.
+ *
+ * @param angle_degrees   Rotation angle in degrees (CCW).
+ * @param scale           Uniform scale factor (1.0 = no scaling).
+ * @param tx              Horizontal translation in pixels (right positive).
+ * @param ty              Vertical translation in pixels (down positive).
+ * @param dsize           Output size; (0,0) => same as input.
+ * @param flags           Interpolation/warp flags (e.g. cv::INTER_LINEAR).
+ * @param borderMode      Border handling (e.g. cv::BORDER_CONSTANT).
+ * @param borderValue     Border value used with CONSTANT border mode.
+ * @return Callable applying the specified affine transform.
+ *
+ * \ingroup spatial_utilities
+ */
+inline auto warp_affine(double angle_degrees, double scale, double tx,
+                        double ty, cv::Size dsize = cv::Size(),
+                        int flags = cv::INTER_LINEAR,
+                        int borderMode = cv::BORDER_CONSTANT,
+                        const cv::Scalar& borderValue = cv::Scalar()) {
+  return [=](const cv::Mat& in) {
+    const cv::Size outSize =
+        (dsize.width > 0 && dsize.height > 0) ? dsize : in.size();
+    // Build rotation/scale about image center
+    const cv::Point2f center(static_cast<float>(in.cols) * 0.5f,
+                             static_cast<float>(in.rows) * 0.5f);
+    cv::Mat M = cv::getRotationMatrix2D(center, angle_degrees, scale);
+    // Add translations (pixels)
+    M.at<double>(0, 2) += tx;
+    M.at<double>(1, 2) += ty;
+    cv::Mat out;
+    cv::warpAffine(in, out, M, outSize, flags, borderMode, borderValue);
+    return out;
+  };
+}
+
+/**
+ * @brief Polar (or log-polar) warp from Cartesian input using cv::warpPolar.
+ *
+ * This maps a Cartesian image to its polar representation. The x dimension
+ * of the output parameterizes angle in [0, 2π), and the y dimension
+ * parameterizes radius in [0, maxRadius].
+ *
+ * @param log_polar   If true, use logarithmic radius mapping; otherwise linear.
+ * @param center      Polar center; if either component is negative, uses
+ *                    image center.
+ * @param maxRadius   Maximum radius in pixels; if <= 0, uses farthest corner.
+ * @param dsize       Output size; if (0,0), uses input size (same rows/cols).
+ * @param flags       Interpolation flags (e.g., cv::INTER_LINEAR).
+ * @return Callable producing the polar/log-polar image.
+ *
+ * \ingroup spatial_utilities
+ */
+inline auto warp_polar(bool log_polar = false,
+                       cv::Point2f center = {-1.f, -1.f},
+                       double maxRadius = -1.0, cv::Size dsize = cv::Size(),
+                       int flags = cv::INTER_LINEAR) {
+  return [=](const cv::Mat& in) {
+    // Resolve output sampling (Angle x Radius)
+    const cv::Size outSize =
+        (dsize.width > 0 && dsize.height > 0) ? dsize : in.size();
+    // Resolve center (Default: image center)
+    cv::Point2f c = center;
+    if (c.x < 0.f || c.y < 0.f) {
+      c = cv::Point2f(static_cast<float>(in.cols) * 0.5f,
+                      static_cast<float>(in.rows) * 0.5f);
+    }
+    // Resolve max radius (default: farthest corner to cover whole image)
+    double mr = maxRadius;
+    if (mr <= 0.0) {
+      const cv::Point2f tl(0.f, 0.f), tr(static_cast<float>(in.cols), 0.f);
+      const cv::Point2f bl(0.f, static_cast<float>(in.rows));
+      const cv::Point2f br(static_cast<float>(in.cols),
+                           static_cast<float>(in.rows));
+      auto dist = [&](const cv::Point2f& p) { return cv::norm(p - c); };
+      mr = std::max({dist(tl), dist(tr), dist(bl), dist(br)});
+    }
+    // Mode: linear or logarithmic radial mapping; no inverse mapping exposed
+    const int mode = (log_polar ? cv::WARP_POLAR_LOG : cv::WARP_POLAR_LINEAR);
+    cv::Mat out;
+    out = cv::Mat::zeros(outSize, in.type());
+    cv::warpPolar(in, out, outSize, c, mr, flags | mode);
+    return out;
+  };
+}
+
 }  // namespace pcv
 
-#endif // PIPELINE_CV_H_
+#endif  // PIPELINE_CV_H_

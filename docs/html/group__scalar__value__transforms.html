@@ -152,22 +152,21 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable performing <code>in + value</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00237">237</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                              {</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <a class="code" href="group__elementwise__operations.html#gaedc43d4473bb033c7f6761be3be2f19b">cv::add</a>(in, value, out);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  };</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;}</div>
-<div class="ttc" id="agroup__elementwise__operations_html_gaedc43d4473bb033c7f6761be3be2f19b"><div class="ttname"><a href="group__elementwise__operations.html#gaedc43d4473bb033c7f6761be3be2f19b">pcv::add</a></div><div class="ttdeci">auto add(const cv::Mat &amp;other, const cv::Scalar &amp;alpha=cv::Scalar(1.0), const cv::Scalar &amp;beta=cv::Scalar(1.0), const cv::Scalar &amp;gamma=cv::Scalar(0.0))</div><div class="ttdoc">Weighted sum: alpha * in + beta * other + gamma.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00348">PipelineCv.h:348</a></div></div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00236">236</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                                              {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="group__elementwise__operations.html#gaedc43d4473bb033c7f6761be3be2f19b">cv::add</a>(in, value, out);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  };</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div>
+<div class="ttc" id="agroup__elementwise__operations_html_gaedc43d4473bb033c7f6761be3be2f19b"><div class="ttname"><a href="group__elementwise__operations.html#gaedc43d4473bb033c7f6761be3be2f19b">pcv::add</a></div><div class="ttdeci">auto add(const cv::Mat &amp;other, const cv::Scalar &amp;alpha=cv::Scalar(1.0), const cv::Scalar &amp;beta=cv::Scalar(1.0), const cv::Scalar &amp;gamma=cv::Scalar(0.0))</div><div class="ttdoc">Weighted sum: alpha * in + beta * other + gamma.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00347">PipelineCv.h:347</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00348">pcv::add()</a>.</p>
+<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00347">pcv::add()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__scalar__value__transforms_ga594753cd4f34c479fea5018ec6176936_cgraph.svg" width="243" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__scalar__value__transforms_ga594753cd4f34c479fea5018ec6176936_cgraph.svg" width="243" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -224,21 +223,21 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable performing clamping. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00276">276</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                             {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    cv::Mat tmp;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">if</span> (preserve_type &amp;&amp;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        (in.depth() == CV_8U || in.depth() == CV_16U || in.depth() == CV_16S))</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      in.convertTo(tmp, CV_32F);</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;      tmp = in;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    cv::min(cv::max(tmp, minVal), maxVal, out);</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">if</span> (preserve_type &amp;&amp; tmp.type() != in.type()) out.convertTo(out, in.type());</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  };</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00275">275</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                             {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    cv::Mat tmp;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordflow">if</span> (preserve_type &amp;&amp;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        (in.depth() == CV_8U || in.depth() == CV_16U || in.depth() == CV_16S))</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      in.convertTo(tmp, CV_32F);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      tmp = in;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    cv::min(cv::max(tmp, minVal), maxVal, out);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">if</span> (preserve_type &amp;&amp; tmp.type() != in.type()) out.convertTo(out, in.type());</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  };</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -275,15 +274,15 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable performing <code>in / scale</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00220">220</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                                        {</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  CV_Assert(scale != 0.0);</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    in.convertTo(out, in.type(), 1.0 / scale);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  };</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00219">219</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                                        {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  CV_Assert(scale != 0.0);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    in.convertTo(out, in.type(), 1.0 / scale);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  };</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -314,22 +313,21 @@ Here is the call graph for this function:</div>
 <p>Useful for simple log compression while avoiding log(0).</p>
 <dl class="section return"><dt>Returns</dt><dd>Callable computing <code>log(in + 1)</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00301">301</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                  {</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <a class="code" href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">cv::log</a>(in + 1.0, out);</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  };</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;}</div>
-<div class="ttc" id="agroup__scalar__value__transforms_html_gabbe5f90c2931e9c23dd99fd0a50ba004"><div class="ttname"><a href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">pcv::log</a></div><div class="ttdeci">auto log()</div><div class="ttdoc">Natural logarithm of (in + 1).</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00301">PipelineCv.h:301</a></div></div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00300">300</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                  {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <a class="code" href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">cv::log</a>(in + 1.0, out);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  };</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;}</div>
+<div class="ttc" id="agroup__scalar__value__transforms_html_gabbe5f90c2931e9c23dd99fd0a50ba004"><div class="ttname"><a href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">pcv::log</a></div><div class="ttdeci">auto log()</div><div class="ttdoc">Natural logarithm of (in + 1).</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00300">PipelineCv.h:300</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="PipelineCv_8h_source.html#l00493">pcv::power_spectrum()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="PipelineCv_8h_source.html#l00492">pcv::power_spectrum()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__scalar__value__transforms_gabbe5f90c2931e9c23dd99fd0a50ba004_icgraph.svg" width="271" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__scalar__value__transforms_gabbe5f90c2931e9c23dd99fd0a50ba004_icgraph.svg" width="271" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -367,14 +365,14 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable performing <code>in * scale</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00204">204</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                          {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    in.convertTo(out, in.type(), scale);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  };</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00203">203</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                          {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    in.convertTo(out, in.type(), scale);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  };</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -437,15 +435,15 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable performing normalization. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00322">322</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                                                                    {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="group__scalar__value__transforms.html#gada98064c858990633209129d89811b49">cv::normalize</a>(in, out, a, b, normType, dtype);</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  };</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div>
-<div class="ttc" id="agroup__scalar__value__transforms_html_gada98064c858990633209129d89811b49"><div class="ttname"><a href="group__scalar__value__transforms.html#gada98064c858990633209129d89811b49">pcv::normalize</a></div><div class="ttdeci">auto normalize(double a=0.0, double b=1.0, int normType=cv::NORM_MINMAX, int dtype=-1)</div><div class="ttdoc">Normalize with OpenCV's cv::normalize.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00322">PipelineCv.h:322</a></div></div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00321">321</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                                                                    {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <a class="code" href="group__scalar__value__transforms.html#gada98064c858990633209129d89811b49">cv::normalize</a>(in, out, a, b, normType, dtype);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  };</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
+<div class="ttc" id="agroup__scalar__value__transforms_html_gada98064c858990633209129d89811b49"><div class="ttname"><a href="group__scalar__value__transforms.html#gada98064c858990633209129d89811b49">pcv::normalize</a></div><div class="ttdeci">auto normalize(double a=0.0, double b=1.0, int normType=cv::NORM_MINMAX, int dtype=-1)</div><div class="ttdoc">Normalize with OpenCV's cv::normalize.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00321">PipelineCv.h:321</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -482,22 +480,21 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable performing <code>in - value</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00253">253</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                                                   {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <a class="code" href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">cv::subtract</a>(in, value, out);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  };</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
-<div class="ttc" id="agroup__elementwise__operations_html_ga0bb1b2b9ae7f9b0f8267ccc2610e78f6"><div class="ttname"><a href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">pcv::subtract</a></div><div class="ttdeci">auto subtract(const cv::Mat &amp;other, double scale=1.0)</div><div class="ttdoc">Element-wise subtraction: in - other, with optional scaling.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00367">PipelineCv.h:367</a></div></div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00252">252</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                                   {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <a class="code" href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">cv::subtract</a>(in, value, out);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  };</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
+<div class="ttc" id="agroup__elementwise__operations_html_ga0bb1b2b9ae7f9b0f8267ccc2610e78f6"><div class="ttname"><a href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">pcv::subtract</a></div><div class="ttdeci">auto subtract(const cv::Mat &amp;other, double scale=1.0)</div><div class="ttdoc">Element-wise subtraction: in - other, with optional scaling.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00366">PipelineCv.h:366</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00367">pcv::subtract()</a>.</p>
+<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00366">pcv::subtract()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__scalar__value__transforms_ga1dada47d27a6562b1bad6eb8a39495df_cgraph.svg" width="295" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__scalar__value__transforms_ga1dada47d27a6562b1bad6eb8a39495df_cgraph.svg" width="295" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

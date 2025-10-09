@@ -29,6 +29,8 @@ var namespaces_dup =
       [ "to_double", "group__type__and__channel__adapters.html#ga54af8fda962fb70e1d8b39ff4e8c31a9", null ],
       [ "to_float", "group__type__and__channel__adapters.html#ga1017b7312073871b14b3d95f4678afc1", null ],
       [ "to_gray", "group__type__and__channel__adapters.html#ga1eaf2bddd565ca2685bf50de5afa166d", null ],
-      [ "to_uint8", "group__type__and__channel__adapters.html#ga3af12c29a08fd9d71ecef5ac80406581", null ]
+      [ "to_uint8", "group__type__and__channel__adapters.html#ga3af12c29a08fd9d71ecef5ac80406581", null ],
+      [ "warp_affine", "group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033", null ],
+      [ "warp_polar", "group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0", null ]
     ] ]
 ];

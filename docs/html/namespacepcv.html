@@ -178,6 +178,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3af12c29a08fd9d71ecef5ac80406581"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__type__and__channel__adapters.html#ga3af12c29a08fd9d71ecef5ac80406581">to_uint8</a> (double scale=255.0)</td></tr>
 <tr class="memdesc:ga3af12c29a08fd9d71ecef5ac80406581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert image to 8-bit unsigned (<code>CV_8U</code>), with optional scaling.  <a href="group__type__and__channel__adapters.html#ga3af12c29a08fd9d71ecef5ac80406581">More...</a><br /></td></tr>
 <tr class="separator:ga3af12c29a08fd9d71ecef5ac80406581"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1401b3b2472995bb2ebc75e507eae033"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">warp_affine</a> (double angle_degrees, double scale, double tx, double ty, cv::Size dsize=cv::Size(), int flags=cv::INTER_LINEAR, int borderMode=cv::BORDER_CONSTANT, const cv::Scalar &amp;borderValue=cv::Scalar())</td></tr>
+<tr class="memdesc:ga1401b3b2472995bb2ebc75e507eae033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affine warp defined by rotation (deg), scale, and translations.  <a href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">More...</a><br /></td></tr>
+<tr class="separator:ga1401b3b2472995bb2ebc75e507eae033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa83d2f2c1972dbc934d6834bf0be1fd0"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0">warp_polar</a> (bool log_polar=false, cv::Point2f center={-1.f, -1.f}, double maxRadius=-1.0, cv::Size dsize=cv::Size(), int flags=cv::INTER_LINEAR)</td></tr>
+<tr class="memdesc:gaa83d2f2c1972dbc934d6834bf0be1fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polar (or log-polar) warp from Cartesian input using cv::warpPolar.  <a href="group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0">More...</a><br /></td></tr>
+<tr class="separator:gaa83d2f2c1972dbc934d6834bf0be1fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ac381424c35c184f2d45cc14236cce714"></a>
@@ -225,10 +231,10 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Output of <code>f(in)</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00047">47</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                                                    {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">return</span> f(in);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00046">46</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                                    {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">return</span> f(in);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

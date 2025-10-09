@@ -90,8 +90,8 @@ $(document).ready(function(){initNavTree('PipelineCv_8h.html',''); initResizable
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;functional&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;opencv2/opencv.hpp&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for PipelineCv.h:</div>
 <div class="dyncontent">
@@ -195,6 +195,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3af12c29a08fd9d71ecef5ac80406581"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__type__and__channel__adapters.html#ga3af12c29a08fd9d71ecef5ac80406581">pcv::to_uint8</a> (double scale=255.0)</td></tr>
 <tr class="memdesc:ga3af12c29a08fd9d71ecef5ac80406581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert image to 8-bit unsigned (<code>CV_8U</code>), with optional scaling.  <a href="group__type__and__channel__adapters.html#ga3af12c29a08fd9d71ecef5ac80406581">More...</a><br /></td></tr>
 <tr class="separator:ga3af12c29a08fd9d71ecef5ac80406581"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1401b3b2472995bb2ebc75e507eae033"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">pcv::warp_affine</a> (double angle_degrees, double scale, double tx, double ty, cv::Size dsize=cv::Size(), int flags=cv::INTER_LINEAR, int borderMode=cv::BORDER_CONSTANT, const cv::Scalar &amp;borderValue=cv::Scalar())</td></tr>
+<tr class="memdesc:ga1401b3b2472995bb2ebc75e507eae033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affine warp defined by rotation (deg), scale, and translations.  <a href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">More...</a><br /></td></tr>
+<tr class="separator:ga1401b3b2472995bb2ebc75e507eae033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa83d2f2c1972dbc934d6834bf0be1fd0"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0">pcv::warp_polar</a> (bool log_polar=false, cv::Point2f center={-1.f, -1.f}, double maxRadius=-1.0, cv::Size dsize=cv::Size(), int flags=cv::INTER_LINEAR)</td></tr>
+<tr class="memdesc:gaa83d2f2c1972dbc934d6834bf0be1fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polar (or log-polar) warp from Cartesian input using cv::warpPolar.  <a href="group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0">More...</a><br /></td></tr>
+<tr class="separator:gaa83d2f2c1972dbc934d6834bf0be1fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
