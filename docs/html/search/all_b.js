@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['real_27',['real',['../group__type__and__channel__adapters.html#ga68a6a87b9b68da4dbb185fc4bdd13f26',1,'pcv']]],
-  ['roll_28',['roll',['../group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b',1,'pcv']]]
+  ['pad_5fto_5feven_22',['pad_to_even',['../group__fourier__frequency__domain__utilities.html#ga95848c5b46425e2dce5c2ee584ba6cd9',1,'pcv']]],
+  ['pcv_23',['pcv',['../namespacepcv.html',1,'']]],
+  ['phase_24',['phase',['../group__complex__domain__operations.html#ga67cab92dfc172ec1f057dc0f9e185ac4',1,'pcv']]],
+  ['pipelinecv_20_2d_20a_20pipeline_20opencv_20adapter_20library_25',['PipelineCv - A pipeline OpenCV adapter library',['../index.html',1,'']]],
+  ['pipelinecv_2edox_26',['PipelineCv.dox',['../PipelineCv_8dox.html',1,'']]],
+  ['pipelinecv_2eh_27',['PipelineCv.h',['../PipelineCv_8h.html',1,'']]],
+  ['power_5fspectrum_28',['power_spectrum',['../group__complex__domain__operations.html#ga1e4de76aa8b71940aec85c35d6c52649',1,'pcv']]]
 ];

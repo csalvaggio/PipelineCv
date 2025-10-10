@@ -94,9 +94,15 @@ $(document).ready(function(){initNavTree('group__spatial__utilities.html',''); i
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:gab0a98d687a0d050665ad8fa3bdb58c16"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#gab0a98d687a0d050665ad8fa3bdb58c16">pcv::gaussian_blur</a> (cv::Size ksize, double sigmaX, double sigmaY=0)</td></tr>
+<tr class="memdesc:gab0a98d687a0d050665ad8fa3bdb58c16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a Gaussian blur (low-pass filter) to the image.  <a href="group__spatial__utilities.html#gab0a98d687a0d050665ad8fa3bdb58c16">More...</a><br /></td></tr>
+<tr class="separator:gab0a98d687a0d050665ad8fa3bdb58c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7d0b69a57c1014ea621efc017c70de3b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b">pcv::roll</a> (int shift_rows, int shift_cols)</td></tr>
 <tr class="memdesc:ga7d0b69a57c1014ea621efc017c70de3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circularly shift (roll) rows and columns.  <a href="group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b">More...</a><br /></td></tr>
 <tr class="separator:ga7d0b69a57c1014ea621efc017c70de3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga441d30f3d3a7a414a01e73fd947b4f2f"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#ga441d30f3d3a7a414a01e73fd947b4f2f">pcv::sobel</a> (int dx, int dy, int ksize=3, double scale=1.0, double delta=0.0, int ddepth=-1)</td></tr>
+<tr class="memdesc:ga441d30f3d3a7a414a01e73fd947b4f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply the Sobel operator to compute image gradients.  <a href="group__spatial__utilities.html#ga441d30f3d3a7a414a01e73fd947b4f2f">More...</a><br /></td></tr>
+<tr class="separator:ga441d30f3d3a7a414a01e73fd947b4f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1401b3b2472995bb2ebc75e507eae033"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">pcv::warp_affine</a> (double angle_degrees, double scale, double tx, double ty, cv::Size dsize=cv::Size(), int flags=cv::INTER_LINEAR, int borderMode=cv::BORDER_CONSTANT, const cv::Scalar &amp;borderValue=cv::Scalar())</td></tr>
 <tr class="memdesc:ga1401b3b2472995bb2ebc75e507eae033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affine warp defined by rotation (deg), scale, and translations.  <a href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">More...</a><br /></td></tr>
 <tr class="separator:ga1401b3b2472995bb2ebc75e507eae033"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -107,6 +113,70 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Spatial utilities for geometrically modifying cv::Mats. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gab0a98d687a0d050665ad8fa3bdb58c16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab0a98d687a0d050665ad8fa3bdb58c16">&#9670;&nbsp;</a></span>gaussian_blur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto pcv::gaussian_blur </td>
+          <td>(</td>
+          <td class="paramtype">cv::Size&#160;</td>
+          <td class="paramname"><em>ksize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>sigmaX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>sigmaY</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Apply a Gaussian blur (low-pass filter) to the image. </p>
+<p>Uses OpenCV's <code>cv::GaussianBlur</code> with the specified kernel size and standard deviations. This is useful for noise reduction, anti-aliasing, or preparing an image for edge detection.</p>
+<p>The function supports anisotropic filtering (different values for sigmaX and sigmaY), and if <code>sigmaY == 0</code>, OpenCV uses the same value as <code>sigmaX</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ksize</td><td>Size of Gaussian kernel (must be odd and positive in each dimension). </td></tr>
+    <tr><td class="paramname">sigmaX</td><td>Gaussian kernel standard deviation in the X direction. </td></tr>
+    <tr><td class="paramname">sigmaY</td><td>Gaussian kernel standard deviation in the Y direction (default is 0 which indicated this should be the same as sigmaX). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Callable that applies Gaussian blur. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00812">812</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;                                                                          {</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;    cv::GaussianBlur(in, out, ksize, sigmaX, sigmaY);</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;  };</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="ga7d0b69a57c1014ea621efc017c70de3b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga7d0b69a57c1014ea621efc017c70de3b">&#9670;&nbsp;</a></span>roll()</h2>
 
@@ -153,34 +223,119 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Callable producing a rolled/shifted image.</dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd><code>in.dims == 2</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00654">654</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;                                                 {</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    CV_Assert(in.dims == 2);</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160; </div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> rows = in.rows;</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> cols = in.cols;</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160; </div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    <span class="keywordtype">int</span> dy = ((shift_rows % rows) + rows) % rows;</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <span class="keywordtype">int</span> dx = ((shift_cols % cols) + cols) % cols;</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160; </div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <span class="keywordflow">if</span> (dy == 0 &amp;&amp; dx == 0) <span class="keywordflow">return</span> in;</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160; </div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    cv::Mat out(in.size(), in.type());</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160; </div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    cv::Mat src1 = in(cv::Rect(0, 0, cols - dx, rows - dy));</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    cv::Mat src2 = in(cv::Rect(cols - dx, 0, dx, rows - dy));</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    cv::Mat src3 = in(cv::Rect(0, rows - dy, cols - dx, dy));</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    cv::Mat src4 = in(cv::Rect(cols - dx, rows - dy, dx, dy));</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160; </div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    src1.copyTo(out(cv::Rect(dx, dy, cols - dx, rows - dy)));</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;    src2.copyTo(out(cv::Rect(0, dy, dx, rows - dy)));</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;    src3.copyTo(out(cv::Rect(dx, 0, cols - dx, dy)));</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    src4.copyTo(out(cv::Rect(0, 0, dx, dy)));</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00674">674</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;                                                 {</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    CV_Assert(in.dims == 2);</div>
 <div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160; </div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  };</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;}</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> rows = in.rows;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> cols = in.cols;</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160; </div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    <span class="keywordtype">int</span> dy = ((shift_rows % rows) + rows) % rows;</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <span class="keywordtype">int</span> dx = ((shift_cols % cols) + cols) % cols;</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160; </div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    <span class="keywordflow">if</span> (dy == 0 &amp;&amp; dx == 0) <span class="keywordflow">return</span> in;</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160; </div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    cv::Mat out(in.size(), in.type());</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160; </div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    cv::Mat src1 = in(cv::Rect(0, 0, cols - dx, rows - dy));</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    cv::Mat src2 = in(cv::Rect(cols - dx, 0, dx, rows - dy));</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    cv::Mat src3 = in(cv::Rect(0, rows - dy, cols - dx, dy));</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    cv::Mat src4 = in(cv::Rect(cols - dx, rows - dy, dx, dy));</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160; </div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    src1.copyTo(out(cv::Rect(dx, dy, cols - dx, rows - dy)));</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    src2.copyTo(out(cv::Rect(0, dy, dx, rows - dy)));</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;    src3.copyTo(out(cv::Rect(dx, 0, cols - dx, dy)));</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    src4.copyTo(out(cv::Rect(0, 0, dx, dy)));</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160; </div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;  };</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga441d30f3d3a7a414a01e73fd947b4f2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga441d30f3d3a7a414a01e73fd947b4f2f">&#9670;&nbsp;</a></span>sobel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto pcv::sobel </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ksize</em> = <code>3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>scale</em> = <code>1.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>delta</em> = <code>0.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ddepth</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Apply the Sobel operator to compute image gradients. </p>
+<p>Computes the first, second, or mixed derivatives of an image using <code>cv::Sobel</code>. Useful for detecting edges or computing gradient magnitude and direction.</p>
+<p>The Sobel operator is a discrete differentiation kernel, combining Gaussian smoothing and differentiation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dx</td><td>Order of the derivative in the x-direction (e.g. 1 for ∂/∂x). </td></tr>
+    <tr><td class="paramname">dy</td><td>Order of the derivative in the y-direction (e.g. 0 for ∂/∂x only). </td></tr>
+    <tr><td class="paramname">ksize</td><td>Size of the extended Sobel kernel (must be 1, 3, 5, or 7). </td></tr>
+    <tr><td class="paramname">scale</td><td>Optional scaling factor applied to the derivative (default 1.0). </td></tr>
+    <tr><td class="paramname">delta</td><td>Optional bias added to the result (default is 0.0). </td></tr>
+    <tr><td class="paramname">ddepth</td><td>Desired output depth (e.g. <code>CV_16S</code>, <code>CV_32F</code>, or -1 to match input). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Callable that applies the Sobel operator. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00844">844</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;                                                       {</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    cv::Sobel(in, out, ddepth, dx, dy, ksize, scale, delta);</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;  };</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -271,23 +426,23 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable applying the specified affine transform. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00701">701</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;                                                                  {</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    <span class="keyword">const</span> cv::Size outSize =</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;        (dsize.width &gt; 0 &amp;&amp; dsize.height &gt; 0) ? dsize : in.size();</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    <span class="comment">// Build rotation/scale about image center</span></div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <span class="keyword">const</span> cv::Point2f center(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols) * 0.5f,</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                             <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows) * 0.5f);</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    cv::Mat M = cv::getRotationMatrix2D(center, angle_degrees, scale);</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    <span class="comment">// Add translations (pixels)</span></div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    M.at&lt;<span class="keywordtype">double</span>&gt;(0, 2) += tx;</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    M.at&lt;<span class="keywordtype">double</span>&gt;(1, 2) += ty;</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    cv::warpAffine(in, out, M, outSize, flags, borderMode, borderValue);</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;  };</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00721">721</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                                                                  {</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;    <span class="keyword">const</span> cv::Size outSize =</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;        (dsize.width &gt; 0 &amp;&amp; dsize.height &gt; 0) ? dsize : in.size();</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    <span class="comment">// Build rotation/scale about image center</span></div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    <span class="keyword">const</span> cv::Point2f center(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols) * 0.5f,</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                             <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows) * 0.5f);</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    cv::Mat M = cv::getRotationMatrix2D(center, angle_degrees, scale);</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;    <span class="comment">// Add translations (pixels)</span></div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;    M.at&lt;<span class="keywordtype">double</span>&gt;(0, 2) += tx;</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    M.at&lt;<span class="keywordtype">double</span>&gt;(1, 2) += ty;</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    cv::warpAffine(in, out, M, outSize, flags, borderMode, borderValue);</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;  };</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -357,38 +512,38 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable producing the polar/log-polar image. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00739">739</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                                          {-1.f, -1.f},</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                       <span class="keywordtype">double</span> maxRadius = -1.0, cv::Size dsize = cv::Size(),</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                       <span class="keywordtype">int</span> flags = cv::INTER_LINEAR) {</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    <span class="comment">// Resolve output sampling (Angle x Radius)</span></div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <span class="keyword">const</span> cv::Size outSize =</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;        (dsize.width &gt; 0 &amp;&amp; dsize.height &gt; 0) ? dsize : in.size();</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;    <span class="comment">// Resolve center (Default: image center)</span></div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    cv::Point2f c = center;</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;    <span class="keywordflow">if</span> (c.x &lt; 0.f || c.y &lt; 0.f) {</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;      c = cv::Point2f(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols) * 0.5f,</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                      <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows) * 0.5f);</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    }</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    <span class="comment">// Resolve max radius (default: farthest corner to cover whole image)</span></div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    <span class="keywordtype">double</span> mr = maxRadius;</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;    <span class="keywordflow">if</span> (mr &lt;= 0.0) {</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;      <span class="keyword">const</span> cv::Point2f tl(0.f, 0.f), tr(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols), 0.f);</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;      <span class="keyword">const</span> cv::Point2f bl(0.f, <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows));</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;      <span class="keyword">const</span> cv::Point2f br(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols),</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                           <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows));</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;      <span class="keyword">auto</span> dist = [&amp;](<span class="keyword">const</span> cv::Point2f&amp; p) { <span class="keywordflow">return</span> cv::norm(p - c); };</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;      mr = std::max({dist(tl), dist(tr), dist(bl), dist(br)});</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;    }</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;    <span class="comment">// Mode: linear or logarithmic radial mapping; no inverse mapping exposed</span></div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> mode = (log_polar ? cv::WARP_POLAR_LOG : cv::WARP_POLAR_LINEAR);</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    out = cv::Mat::zeros(outSize, in.type());</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    cv::warpPolar(in, out, outSize, c, mr, flags | mode);</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;  };</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00759">759</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                                          {-1.f, -1.f},</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                       <span class="keywordtype">double</span> maxRadius = -1.0, cv::Size dsize = cv::Size(),</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                       <span class="keywordtype">int</span> flags = cv::INTER_LINEAR) {</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    <span class="comment">// Resolve output sampling (Angle x Radius)</span></div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;    <span class="keyword">const</span> cv::Size outSize =</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;        (dsize.width &gt; 0 &amp;&amp; dsize.height &gt; 0) ? dsize : in.size();</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    <span class="comment">// Resolve center (Default: image center)</span></div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    cv::Point2f c = center;</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    <span class="keywordflow">if</span> (c.x &lt; 0.f || c.y &lt; 0.f) {</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;      c = cv::Point2f(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols) * 0.5f,</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                      <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows) * 0.5f);</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    }</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    <span class="comment">// Resolve max radius (default: farthest corner to cover whole image)</span></div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;    <span class="keywordtype">double</span> mr = maxRadius;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    <span class="keywordflow">if</span> (mr &lt;= 0.0) {</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;      <span class="keyword">const</span> cv::Point2f tl(0.f, 0.f), tr(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols), 0.f);</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;      <span class="keyword">const</span> cv::Point2f bl(0.f, <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows));</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;      <span class="keyword">const</span> cv::Point2f br(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols),</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                           <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows));</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;      <span class="keyword">auto</span> dist = [&amp;](<span class="keyword">const</span> cv::Point2f&amp; p) { <span class="keywordflow">return</span> cv::norm(p - c); };</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;      mr = std::max({dist(tl), dist(tr), dist(bl), dist(br)});</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    }</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;    <span class="comment">// Mode: linear or logarithmic radial mapping; no inverse mapping exposed</span></div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> mode = (log_polar ? cv::WARP_POLAR_LOG : cv::WARP_POLAR_LINEAR);</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;    out = cv::Mat::zeros(outSize, in.type());</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;    cv::warpPolar(in, out, outSize, c, mr, flags | mode);</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;  };</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

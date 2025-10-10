@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['imag_54',['imag',['../group__type__and__channel__adapters.html#ga06bab21407dca52598cd41a557d152b0',1,'pcv']]]
+  ['gaussian_5fblur_57',['gaussian_blur',['../group__spatial__utilities.html#gab0a98d687a0d050665ad8fa3bdb58c16',1,'pcv']]]
 ];

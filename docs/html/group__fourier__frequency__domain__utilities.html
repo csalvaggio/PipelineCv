@@ -100,6 +100,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3241537364b8030a1123588349495b3c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c">pcv::fft_shift</a> ()</td></tr>
 <tr class="memdesc:ga3241537364b8030a1123588349495b3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap DFT quadrants so that the zero-frequency component moves to the center.  <a href="group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c">More...</a><br /></td></tr>
 <tr class="separator:ga3241537364b8030a1123588349495b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5da2c3c5152ea2cdc9cb78a56c95a136"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fourier__frequency__domain__utilities.html#ga5da2c3c5152ea2cdc9cb78a56c95a136">pcv::idft</a> (int flags=cv::DFT_SCALE)</td></tr>
+<tr class="memdesc:ga5da2c3c5152ea2cdc9cb78a56c95a136"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse Discrete Fourier Transform producing real output.  <a href="group__fourier__frequency__domain__utilities.html#ga5da2c3c5152ea2cdc9cb78a56c95a136">More...</a><br /></td></tr>
+<tr class="separator:ga5da2c3c5152ea2cdc9cb78a56c95a136"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga95848c5b46425e2dce5c2ee584ba6cd9"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fourier__frequency__domain__utilities.html#ga95848c5b46425e2dce5c2ee584ba6cd9">pcv::pad_to_even</a> ()</td></tr>
 <tr class="memdesc:ga95848c5b46425e2dce5c2ee584ba6cd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pad image to even dimensions using a constant (zero) border.  <a href="group__fourier__frequency__domain__utilities.html#ga95848c5b46425e2dce5c2ee584ba6cd9">More...</a><br /></td></tr>
 <tr class="separator:ga95848c5b46425e2dce5c2ee584ba6cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,6 +153,13 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;}</div>
 <div class="ttc" id="agroup__fourier__frequency__domain__utilities_html_ga459e360dfb8e5614bf654161ee9c2ccf"><div class="ttname"><a href="group__fourier__frequency__domain__utilities.html#ga459e360dfb8e5614bf654161ee9c2ccf">pcv::dft</a></div><div class="ttdeci">auto dft(int flags=0)</div><div class="ttdoc">Discrete Fourier Transform producing complex output.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00599">PipelineCv.h:599</a></div></div>
 </div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="PipelineCv_8h_source.html#l00619">pcv::idft()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__fourier__frequency__domain__utilities_ga459e360dfb8e5614bf654161ee9c2ccf_icgraph.svg" width="192" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
 </div>
 </div>
 <a id="ga3241537364b8030a1123588349495b3c"></a>
@@ -179,27 +189,79 @@ Functions</h2></td></tr>
 <p>Works on 2-dimensional cv::Mats (even dimensions recommended).</p>
 <dl class="section return"><dt>Returns</dt><dd>Callable performing quadrant swaps (Q0&lt;-&gt;Q3 and Q1&lt;-&gt;Q2). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00617">617</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                        {</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    cv::Mat out = in.clone();</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    <span class="keywordtype">int</span> cx = out.cols / 2;</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    <span class="keywordtype">int</span> cy = out.rows / 2;</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    cv::Mat q0(out, cv::Rect(0, 0, cx, cy));</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    cv::Mat q1(out, cv::Rect(cx, 0, cx, cy));</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    cv::Mat q2(out, cv::Rect(0, cy, cx, cy));</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    cv::Mat q3(out, cv::Rect(cx, cy, cx, cy));</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    cv::Mat tmp;</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    q0.copyTo(tmp);</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    q3.copyTo(q0);</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    tmp.copyTo(q3);</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    q1.copyTo(tmp);</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    q2.copyTo(q1);</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    tmp.copyTo(q2);</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  };</div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00637">637</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;                        {</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    cv::Mat out = in.clone();</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    <span class="keywordtype">int</span> cx = out.cols / 2;</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    <span class="keywordtype">int</span> cy = out.rows / 2;</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    cv::Mat q0(out, cv::Rect(0, 0, cx, cy));</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    cv::Mat q1(out, cv::Rect(cx, 0, cx, cy));</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    cv::Mat q2(out, cv::Rect(0, cy, cx, cy));</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    cv::Mat q3(out, cv::Rect(cx, cy, cx, cy));</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    cv::Mat tmp;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    q0.copyTo(tmp);</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    q3.copyTo(q0);</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    tmp.copyTo(q3);</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    q1.copyTo(tmp);</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    q2.copyTo(q1);</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    tmp.copyTo(q2);</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;  };</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;}</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="ga5da2c3c5152ea2cdc9cb78a56c95a136"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5da2c3c5152ea2cdc9cb78a56c95a136">&#9670;&nbsp;</a></span>idft()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto pcv::idft </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags</em> = <code>cv::DFT_SCALE</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inverse Discrete Fourier Transform producing real output. </p>
+<p>The default flag includes <code>cv::DFT_SCALE</code> to scale the result by <code>1/N</code> (for orthonormality).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>Defaults to <code>cv::DFT_SCALE</code>. Note that <code>cv::DFT_INVERSE</code> and <code>cv::DFT_REAL_OUTPUT</code> are always applied. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Callable performing the inverse DFT. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00619">619</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                                          {</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    <a class="code" href="group__fourier__frequency__domain__utilities.html#ga459e360dfb8e5614bf654161ee9c2ccf">cv::dft</a>(in, out, flags | cv::DFT_INVERSE | cv::DFT_REAL_OUTPUT);</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;  };</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00599">pcv::dft()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__fourier__frequency__domain__utilities_ga5da2c3c5152ea2cdc9cb78a56c95a136_cgraph.svg" width="192" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
 </div>
 </div>
 <a id="ga95848c5b46425e2dce5c2ee584ba6cd9"></a>

@@ -1,0 +1,4 @@
+<map id="pcv::dft" name="pcv::dft">
+<area shape="rect" id="node1" title="Discrete Fourier Transform producing complex output." alt="" coords="121,5,187,32"/>
+<area shape="rect" id="node2" href="$group__fourier__frequency__domain__utilities.html#ga5da2c3c5152ea2cdc9cb78a56c95a136" title="Inverse Discrete Fourier Transform producing real output." alt="" coords="5,5,73,32"/>
+</map>

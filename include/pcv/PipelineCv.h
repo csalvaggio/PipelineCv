@@ -841,8 +841,8 @@ inline auto gaussian_blur(cv::Size ksize, double sigmaX, double sigmaY = 0) {
  *
  * \ingroup spatial_utilities
  */
-inline auto sobel_filter(int dx, int dy, int ksize = 3, double scale = 1.0,
-                         double delta = 0.0, int ddepth = -1) {
+inline auto sobel(int dx, int dy, int ksize = 3, double scale = 1.0,
+                  double delta = 0.0, int ddepth = -1) {
   return [=](const cv::Mat& in) {
     cv::Mat out;
     cv::Sobel(in, out, ddepth, dx, dy, ksize, scale, delta);

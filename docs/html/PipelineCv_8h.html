@@ -95,8 +95,7 @@ $(document).ready(function(){initNavTree('PipelineCv_8h.html',''); initResizable
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for PipelineCv.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="PipelineCv_8h__incl.svg" width="338" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="PipelineCv_8h__incl.svg" width="338" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="PipelineCv_8h_source.html">Go to the source code of this file.</a></p>
@@ -138,6 +137,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3241537364b8030a1123588349495b3c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c">pcv::fft_shift</a> ()</td></tr>
 <tr class="memdesc:ga3241537364b8030a1123588349495b3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap DFT quadrants so that the zero-frequency component moves to the center.  <a href="group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c">More...</a><br /></td></tr>
 <tr class="separator:ga3241537364b8030a1123588349495b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0a98d687a0d050665ad8fa3bdb58c16"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#gab0a98d687a0d050665ad8fa3bdb58c16">pcv::gaussian_blur</a> (cv::Size ksize, double sigmaX, double sigmaY=0)</td></tr>
+<tr class="memdesc:gab0a98d687a0d050665ad8fa3bdb58c16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a Gaussian blur (low-pass filter) to the image.  <a href="group__spatial__utilities.html#gab0a98d687a0d050665ad8fa3bdb58c16">More...</a><br /></td></tr>
+<tr class="separator:gab0a98d687a0d050665ad8fa3bdb58c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5da2c3c5152ea2cdc9cb78a56c95a136"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__fourier__frequency__domain__utilities.html#ga5da2c3c5152ea2cdc9cb78a56c95a136">pcv::idft</a> (int flags=cv::DFT_SCALE)</td></tr>
+<tr class="memdesc:ga5da2c3c5152ea2cdc9cb78a56c95a136"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse Discrete Fourier Transform producing real output.  <a href="group__fourier__frequency__domain__utilities.html#ga5da2c3c5152ea2cdc9cb78a56c95a136">More...</a><br /></td></tr>
+<tr class="separator:ga5da2c3c5152ea2cdc9cb78a56c95a136"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga06bab21407dca52598cd41a557d152b0"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__type__and__channel__adapters.html#ga06bab21407dca52598cd41a557d152b0">pcv::imag</a> ()</td></tr>
 <tr class="memdesc:ga06bab21407dca52598cd41a557d152b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract imaginary part from a 2-channel complex image.  <a href="group__type__and__channel__adapters.html#ga06bab21407dca52598cd41a557d152b0">More...</a><br /></td></tr>
 <tr class="separator:ga06bab21407dca52598cd41a557d152b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,6 +179,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga7d0b69a57c1014ea621efc017c70de3b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b">pcv::roll</a> (int shift_rows, int shift_cols)</td></tr>
 <tr class="memdesc:ga7d0b69a57c1014ea621efc017c70de3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circularly shift (roll) rows and columns.  <a href="group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b">More...</a><br /></td></tr>
 <tr class="separator:ga7d0b69a57c1014ea621efc017c70de3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga441d30f3d3a7a414a01e73fd947b4f2f"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__spatial__utilities.html#ga441d30f3d3a7a414a01e73fd947b4f2f">pcv::sobel</a> (int dx, int dy, int ksize=3, double scale=1.0, double delta=0.0, int ddepth=-1)</td></tr>
+<tr class="memdesc:ga441d30f3d3a7a414a01e73fd947b4f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply the Sobel operator to compute image gradients.  <a href="group__spatial__utilities.html#ga441d30f3d3a7a414a01e73fd947b4f2f">More...</a><br /></td></tr>
+<tr class="separator:ga441d30f3d3a7a414a01e73fd947b4f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0bb1b2b9ae7f9b0f8267ccc2610e78f6"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">pcv::subtract</a> (const cv::Mat &amp;other, double scale=1.0)</td></tr>
 <tr class="memdesc:ga0bb1b2b9ae7f9b0f8267ccc2610e78f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Element-wise subtraction: <code>in - other</code>, with optional scaling.  <a href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">More...</a><br /></td></tr>
 <tr class="separator:ga0bb1b2b9ae7f9b0f8267ccc2610e78f6"><td class="memSeparator" colspan="2">&#160;</td></tr>

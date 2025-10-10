@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pipelinecv_20_2d_20a_20pipeline_20opencv_20adapter_20library_81',['PipelineCv - A pipeline OpenCV adapter library',['../index.html',1,'']]]
+  ['pipelinecv_20_2d_20a_20pipeline_20opencv_20adapter_20library_87',['PipelineCv - A pipeline OpenCV adapter library',['../index.html',1,'']]]
 ];

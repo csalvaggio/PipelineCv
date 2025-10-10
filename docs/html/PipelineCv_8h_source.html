@@ -693,173 +693,254 @@ $(document).ready(function(){initNavTree('PipelineCv_8h_source.html',''); initRe
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;}</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;<span class="comment"> * @brief Swap DFT quadrants so that the zero-frequency component moves to</span></div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;<span class="comment"> * the center.</span></div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;<span class="comment"> * Works on 2-dimensional cv::Mats (even dimensions recommended).</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;<span class="comment"> * @brief Inverse Discrete Fourier Transform producing real output.</span></div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="comment"> * The default flag includes `cv::DFT_SCALE` to scale the result by `1/N` (for</span></div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;<span class="comment"> * orthonormality).</span></div>
 <div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;<span class="comment"> * @return Callable performing quadrant swaps (Q0&lt;-&gt;Q3 and Q1&lt;-&gt;Q2).</span></div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;<span class="comment"> * \ingroup fourier_frequency_domain_utilities</span></div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00617"></a><span class="lineno"><a class="line" href="group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c">  617</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c">fft_shift</a>() {</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    cv::Mat out = in.clone();</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    <span class="keywordtype">int</span> cx = out.cols / 2;</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    <span class="keywordtype">int</span> cy = out.rows / 2;</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    cv::Mat q0(out, cv::Rect(0, 0, cx, cy));</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    cv::Mat q1(out, cv::Rect(cx, 0, cx, cy));</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    cv::Mat q2(out, cv::Rect(0, cy, cx, cy));</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    cv::Mat q3(out, cv::Rect(cx, cy, cx, cy));</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    cv::Mat tmp;</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    q0.copyTo(tmp);</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    q3.copyTo(q0);</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    tmp.copyTo(q3);</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    q1.copyTo(tmp);</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    q2.copyTo(q1);</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    tmp.copyTo(q2);</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  };</div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;}</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160; </div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;<span class="comment">// ============================================================================</span></div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;<span class="comment">// 6) Spatial Utilities</span></div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;<span class="comment">// ============================================================================</span></div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;<span class="comment"> * @brief Circularly shift (roll) rows and columns.</span></div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;<span class="comment"> * Positive shifts move content down/right; negative move content up/left.</span></div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;<span class="comment"> * @param shift_rows Row shift (can be negative).</span></div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;<span class="comment"> * @param shift_cols Column shift (can be negative).</span></div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;<span class="comment"> * @return Callable producing a rolled/shifted image.</span></div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;<span class="comment"> * @pre `in.dims == 2`.</span></div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;<span class="comment"> * \ingroup spatial_utilities</span></div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00654"></a><span class="lineno"><a class="line" href="group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b">  654</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b">roll</a>(<span class="keywordtype">int</span> shift_rows, <span class="keywordtype">int</span> shift_cols) {</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    CV_Assert(in.dims == 2);</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160; </div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> rows = in.rows;</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> cols = in.cols;</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160; </div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    <span class="keywordtype">int</span> dy = ((shift_rows % rows) + rows) % rows;</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <span class="keywordtype">int</span> dx = ((shift_cols % cols) + cols) % cols;</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160; </div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <span class="keywordflow">if</span> (dy == 0 &amp;&amp; dx == 0) <span class="keywordflow">return</span> in;</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160; </div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    cv::Mat out(in.size(), in.type());</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160; </div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    cv::Mat src1 = in(cv::Rect(0, 0, cols - dx, rows - dy));</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    cv::Mat src2 = in(cv::Rect(cols - dx, 0, dx, rows - dy));</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    cv::Mat src3 = in(cv::Rect(0, rows - dy, cols - dx, dy));</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    cv::Mat src4 = in(cv::Rect(cols - dx, rows - dy, dx, dy));</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160; </div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    src1.copyTo(out(cv::Rect(dx, dy, cols - dx, rows - dy)));</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;    src2.copyTo(out(cv::Rect(0, dy, dx, rows - dy)));</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;    src3.copyTo(out(cv::Rect(dx, 0, cols - dx, dy)));</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    src4.copyTo(out(cv::Rect(0, 0, dx, dy)));</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;<span class="comment"> * @param flags Defaults to `cv::DFT_SCALE`. Note that `cv::DFT_INVERSE`</span></div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;<span class="comment"> *              and `cv::DFT_REAL_OUTPUT` are always applied.</span></div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;<span class="comment"> * @return Callable performing the inverse DFT.</span></div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;<span class="comment"> * \ingroup fourier_frequency_domain_utilities</span></div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00619"></a><span class="lineno"><a class="line" href="group__fourier__frequency__domain__utilities.html#ga5da2c3c5152ea2cdc9cb78a56c95a136">  619</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__fourier__frequency__domain__utilities.html#ga5da2c3c5152ea2cdc9cb78a56c95a136">idft</a>(<span class="keywordtype">int</span> flags = cv::DFT_SCALE) {</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    <a class="code" href="group__fourier__frequency__domain__utilities.html#ga459e360dfb8e5614bf654161ee9c2ccf">cv::dft</a>(in, out, flags | cv::DFT_INVERSE | cv::DFT_REAL_OUTPUT);</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;  };</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;}</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;<span class="comment"> * @brief Swap DFT quadrants so that the zero-frequency component moves to</span></div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;<span class="comment"> * the center.</span></div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;<span class="comment"> * Works on 2-dimensional cv::Mats (even dimensions recommended).</span></div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;<span class="comment"> * @return Callable performing quadrant swaps (Q0&lt;-&gt;Q3 and Q1&lt;-&gt;Q2).</span></div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;<span class="comment"> * \ingroup fourier_frequency_domain_utilities</span></div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00637"></a><span class="lineno"><a class="line" href="group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c">  637</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c">fft_shift</a>() {</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    cv::Mat out = in.clone();</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    <span class="keywordtype">int</span> cx = out.cols / 2;</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    <span class="keywordtype">int</span> cy = out.rows / 2;</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    cv::Mat q0(out, cv::Rect(0, 0, cx, cy));</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    cv::Mat q1(out, cv::Rect(cx, 0, cx, cy));</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    cv::Mat q2(out, cv::Rect(0, cy, cx, cy));</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    cv::Mat q3(out, cv::Rect(cx, cy, cx, cy));</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    cv::Mat tmp;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    q0.copyTo(tmp);</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    q3.copyTo(q0);</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    tmp.copyTo(q3);</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    q1.copyTo(tmp);</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    q2.copyTo(q1);</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    tmp.copyTo(q2);</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;  };</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;}</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160; </div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;<span class="comment">// ============================================================================</span></div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;<span class="comment">// 6) Spatial Utilities</span></div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;<span class="comment">// ============================================================================</span></div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;<span class="comment"> * @brief Circularly shift (roll) rows and columns.</span></div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;<span class="comment"> * Positive shifts move content down/right; negative move content up/left.</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;<span class="comment"> * @param shift_rows Row shift (can be negative).</span></div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;<span class="comment"> * @param shift_cols Column shift (can be negative).</span></div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;<span class="comment"> * @return Callable producing a rolled/shifted image.</span></div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;<span class="comment"> * @pre `in.dims == 2`.</span></div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;<span class="comment"> * \ingroup spatial_utilities</span></div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00674"></a><span class="lineno"><a class="line" href="group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b">  674</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b">roll</a>(<span class="keywordtype">int</span> shift_rows, <span class="keywordtype">int</span> shift_cols) {</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    CV_Assert(in.dims == 2);</div>
 <div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160; </div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  };</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;}</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;<span class="comment"> * @brief Affine warp defined by rotation (deg), scale, and translations.</span></div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;<span class="comment"> * Builds a 2×3 matrix via `cv::getRotationMatrix2D(center, angle_degrees,</span></div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;<span class="comment"> * scale)` about the input image center, then adds translations (tx, ty)</span></div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;<span class="comment"> * in pixels.</span></div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;<span class="comment"> * @param angle_degrees   Rotation angle in degrees (CCW).</span></div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;<span class="comment"> * @param scale           Uniform scale factor (1.0 = no scaling).</span></div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;<span class="comment"> * @param tx              Horizontal translation in pixels (right positive).</span></div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;<span class="comment"> * @param ty              Vertical translation in pixels (down positive).</span></div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;<span class="comment"> * @param dsize           Output size; (0,0) =&gt; same as input.</span></div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;<span class="comment"> * @param flags           Interpolation/warp flags (e.g. cv::INTER_LINEAR).</span></div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;<span class="comment"> * @param borderMode      Border handling (e.g. cv::BORDER_CONSTANT).</span></div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;<span class="comment"> * @param borderValue     Border value used with CONSTANT border mode.</span></div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;<span class="comment"> * @return Callable applying the specified affine transform.</span></div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;<span class="comment"> * \ingroup spatial_utilities</span></div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00701"></a><span class="lineno"><a class="line" href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">  701</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">warp_affine</a>(<span class="keywordtype">double</span> angle_degrees, <span class="keywordtype">double</span> scale, <span class="keywordtype">double</span> tx,</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                        <span class="keywordtype">double</span> ty, cv::Size dsize = cv::Size(),</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;                        <span class="keywordtype">int</span> flags = cv::INTER_LINEAR,</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;                        <span class="keywordtype">int</span> borderMode = cv::BORDER_CONSTANT,</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;                        <span class="keyword">const</span> cv::Scalar&amp; borderValue = cv::Scalar()) {</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    <span class="keyword">const</span> cv::Size outSize =</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;        (dsize.width &gt; 0 &amp;&amp; dsize.height &gt; 0) ? dsize : in.size();</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    <span class="comment">// Build rotation/scale about image center</span></div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <span class="keyword">const</span> cv::Point2f center(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols) * 0.5f,</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                             <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows) * 0.5f);</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    cv::Mat M = cv::getRotationMatrix2D(center, angle_degrees, scale);</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    <span class="comment">// Add translations (pixels)</span></div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    M.at&lt;<span class="keywordtype">double</span>&gt;(0, 2) += tx;</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    M.at&lt;<span class="keywordtype">double</span>&gt;(1, 2) += ty;</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    cv::warpAffine(in, out, M, outSize, flags, borderMode, borderValue);</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;  };</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;}</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;<span class="comment"> * @brief Polar (or log-polar) warp from Cartesian input using cv::warpPolar.</span></div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;<span class="comment"> * This maps a Cartesian image to its polar representation. The x dimension</span></div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;<span class="comment"> * of the output parameterizes angle in [0, 2π), and the y dimension</span></div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;<span class="comment"> * parameterizes radius in [0, maxRadius].</span></div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;<span class="comment"> * @param log_polar   If true, use logarithmic radius mapping; otherwise linear.</span></div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;<span class="comment"> * @param center      Polar center; if either component is negative, uses</span></div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;<span class="comment"> *                    image center.</span></div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;<span class="comment"> * @param maxRadius   Maximum radius in pixels; if &lt;= 0, uses farthest corner.</span></div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;<span class="comment"> * @param dsize       Output size; if (0,0), uses input size (same rows/cols).</span></div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;<span class="comment"> * @param flags       Interpolation flags (e.g., cv::INTER_LINEAR).</span></div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;<span class="comment"> * @return Callable producing the polar/log-polar image.</span></div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;<span class="comment"> * \ingroup spatial_utilities</span></div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00739"></a><span class="lineno"><a class="line" href="group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0">  739</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0">warp_polar</a>(<span class="keywordtype">bool</span> log_polar = <span class="keyword">false</span>,</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                       cv::Point2f center = {-1.f, -1.f},</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                       <span class="keywordtype">double</span> maxRadius = -1.0, cv::Size dsize = cv::Size(),</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                       <span class="keywordtype">int</span> flags = cv::INTER_LINEAR) {</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    <span class="comment">// Resolve output sampling (Angle x Radius)</span></div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <span class="keyword">const</span> cv::Size outSize =</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;        (dsize.width &gt; 0 &amp;&amp; dsize.height &gt; 0) ? dsize : in.size();</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;    <span class="comment">// Resolve center (Default: image center)</span></div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    cv::Point2f c = center;</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;    <span class="keywordflow">if</span> (c.x &lt; 0.f || c.y &lt; 0.f) {</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;      c = cv::Point2f(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols) * 0.5f,</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                      <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows) * 0.5f);</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    }</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    <span class="comment">// Resolve max radius (default: farthest corner to cover whole image)</span></div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    <span class="keywordtype">double</span> mr = maxRadius;</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;    <span class="keywordflow">if</span> (mr &lt;= 0.0) {</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;      <span class="keyword">const</span> cv::Point2f tl(0.f, 0.f), tr(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols), 0.f);</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;      <span class="keyword">const</span> cv::Point2f bl(0.f, <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows));</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;      <span class="keyword">const</span> cv::Point2f br(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols),</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                           <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows));</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;      <span class="keyword">auto</span> dist = [&amp;](<span class="keyword">const</span> cv::Point2f&amp; p) { <span class="keywordflow">return</span> cv::norm(p - c); };</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;      mr = std::max({dist(tl), dist(tr), dist(bl), dist(br)});</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;    }</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;    <span class="comment">// Mode: linear or logarithmic radial mapping; no inverse mapping exposed</span></div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> mode = (log_polar ? cv::WARP_POLAR_LOG : cv::WARP_POLAR_LINEAR);</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    out = cv::Mat::zeros(outSize, in.type());</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    cv::warpPolar(in, out, outSize, c, mr, flags | mode);</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;  };</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;}</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160; </div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;}  <span class="comment">// namespace pcv</span></div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160; </div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// PIPELINE_CV_H_</span></div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> rows = in.rows;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> cols = in.cols;</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160; </div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    <span class="keywordtype">int</span> dy = ((shift_rows % rows) + rows) % rows;</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <span class="keywordtype">int</span> dx = ((shift_cols % cols) + cols) % cols;</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160; </div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    <span class="keywordflow">if</span> (dy == 0 &amp;&amp; dx == 0) <span class="keywordflow">return</span> in;</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160; </div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    cv::Mat out(in.size(), in.type());</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160; </div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    cv::Mat src1 = in(cv::Rect(0, 0, cols - dx, rows - dy));</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    cv::Mat src2 = in(cv::Rect(cols - dx, 0, dx, rows - dy));</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    cv::Mat src3 = in(cv::Rect(0, rows - dy, cols - dx, dy));</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    cv::Mat src4 = in(cv::Rect(cols - dx, rows - dy, dx, dy));</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160; </div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    src1.copyTo(out(cv::Rect(dx, dy, cols - dx, rows - dy)));</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    src2.copyTo(out(cv::Rect(0, dy, dx, rows - dy)));</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;    src3.copyTo(out(cv::Rect(dx, 0, cols - dx, dy)));</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    src4.copyTo(out(cv::Rect(0, 0, dx, dy)));</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160; </div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;  };</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;}</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;<span class="comment"> * @brief Affine warp defined by rotation (deg), scale, and translations.</span></div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;<span class="comment"> * Builds a 2×3 matrix via `cv::getRotationMatrix2D(center, angle_degrees,</span></div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;<span class="comment"> * scale)` about the input image center, then adds translations (tx, ty)</span></div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;<span class="comment"> * in pixels.</span></div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;<span class="comment"> * @param angle_degrees   Rotation angle in degrees (CCW).</span></div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;<span class="comment"> * @param scale           Uniform scale factor (1.0 = no scaling).</span></div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;<span class="comment"> * @param tx              Horizontal translation in pixels (right positive).</span></div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;<span class="comment"> * @param ty              Vertical translation in pixels (down positive).</span></div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;<span class="comment"> * @param dsize           Output size; (0,0) =&gt; same as input.</span></div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;<span class="comment"> * @param flags           Interpolation/warp flags (e.g. cv::INTER_LINEAR).</span></div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;<span class="comment"> * @param borderMode      Border handling (e.g. cv::BORDER_CONSTANT).</span></div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;<span class="comment"> * @param borderValue     Border value used with CONSTANT border mode.</span></div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;<span class="comment"> * @return Callable applying the specified affine transform.</span></div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;<span class="comment"> * \ingroup spatial_utilities</span></div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00721"></a><span class="lineno"><a class="line" href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">  721</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">warp_affine</a>(<span class="keywordtype">double</span> angle_degrees, <span class="keywordtype">double</span> scale, <span class="keywordtype">double</span> tx,</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                        <span class="keywordtype">double</span> ty, cv::Size dsize = cv::Size(),</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                        <span class="keywordtype">int</span> flags = cv::INTER_LINEAR,</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                        <span class="keywordtype">int</span> borderMode = cv::BORDER_CONSTANT,</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                        <span class="keyword">const</span> cv::Scalar&amp; borderValue = cv::Scalar()) {</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;    <span class="keyword">const</span> cv::Size outSize =</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;        (dsize.width &gt; 0 &amp;&amp; dsize.height &gt; 0) ? dsize : in.size();</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    <span class="comment">// Build rotation/scale about image center</span></div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    <span class="keyword">const</span> cv::Point2f center(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols) * 0.5f,</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                             <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows) * 0.5f);</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    cv::Mat M = cv::getRotationMatrix2D(center, angle_degrees, scale);</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;    <span class="comment">// Add translations (pixels)</span></div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;    M.at&lt;<span class="keywordtype">double</span>&gt;(0, 2) += tx;</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    M.at&lt;<span class="keywordtype">double</span>&gt;(1, 2) += ty;</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    cv::warpAffine(in, out, M, outSize, flags, borderMode, borderValue);</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;  };</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;}</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="comment"> * @brief Polar (or log-polar) warp from Cartesian input using cv::warpPolar.</span></div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;<span class="comment"> * This maps a Cartesian image to its polar representation. The x dimension</span></div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;<span class="comment"> * of the output parameterizes angle in [0, 2π), and the y dimension</span></div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;<span class="comment"> * parameterizes radius in [0, maxRadius].</span></div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;<span class="comment"> * @param log_polar   If true, use logarithmic radius mapping; otherwise linear.</span></div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;<span class="comment"> * @param center      Polar center; if either component is negative, uses</span></div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;<span class="comment"> *                    image center.</span></div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;<span class="comment"> * @param maxRadius   Maximum radius in pixels; if &lt;= 0, uses farthest corner.</span></div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;<span class="comment"> * @param dsize       Output size; if (0,0), uses input size (same rows/cols).</span></div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;<span class="comment"> * @param flags       Interpolation flags (e.g., cv::INTER_LINEAR).</span></div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;<span class="comment"> * @return Callable producing the polar/log-polar image.</span></div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;<span class="comment"> * \ingroup spatial_utilities</span></div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00759"></a><span class="lineno"><a class="line" href="group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0">  759</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0">warp_polar</a>(<span class="keywordtype">bool</span> log_polar = <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                       cv::Point2f center = {-1.f, -1.f},</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                       <span class="keywordtype">double</span> maxRadius = -1.0, cv::Size dsize = cv::Size(),</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                       <span class="keywordtype">int</span> flags = cv::INTER_LINEAR) {</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    <span class="comment">// Resolve output sampling (Angle x Radius)</span></div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;    <span class="keyword">const</span> cv::Size outSize =</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;        (dsize.width &gt; 0 &amp;&amp; dsize.height &gt; 0) ? dsize : in.size();</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    <span class="comment">// Resolve center (Default: image center)</span></div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    cv::Point2f c = center;</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    <span class="keywordflow">if</span> (c.x &lt; 0.f || c.y &lt; 0.f) {</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;      c = cv::Point2f(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols) * 0.5f,</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                      <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows) * 0.5f);</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    }</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    <span class="comment">// Resolve max radius (default: farthest corner to cover whole image)</span></div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;    <span class="keywordtype">double</span> mr = maxRadius;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    <span class="keywordflow">if</span> (mr &lt;= 0.0) {</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;      <span class="keyword">const</span> cv::Point2f tl(0.f, 0.f), tr(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols), 0.f);</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;      <span class="keyword">const</span> cv::Point2f bl(0.f, <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows));</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;      <span class="keyword">const</span> cv::Point2f br(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.cols),</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                           <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(in.rows));</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;      <span class="keyword">auto</span> dist = [&amp;](<span class="keyword">const</span> cv::Point2f&amp; p) { <span class="keywordflow">return</span> cv::norm(p - c); };</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;      mr = std::max({dist(tl), dist(tr), dist(bl), dist(br)});</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    }</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;    <span class="comment">// Mode: linear or logarithmic radial mapping; no inverse mapping exposed</span></div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> mode = (log_polar ? cv::WARP_POLAR_LOG : cv::WARP_POLAR_LINEAR);</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;    out = cv::Mat::zeros(outSize, in.type());</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;    cv::warpPolar(in, out, outSize, c, mr, flags | mode);</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;  };</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;}</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;<span class="comment"> * @brief Apply a Gaussian blur (low-pass filter) to the image.</span></div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;<span class="comment"> * Uses OpenCV&#39;s `cv::GaussianBlur` with the specified kernel size and standard</span></div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;<span class="comment"> * deviations. This is useful for noise reduction, anti-aliasing, or preparing</span></div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;<span class="comment"> * an image for edge detection.</span></div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;<span class="comment"> * The function supports anisotropic filtering (different values for sigmaX and</span></div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;<span class="comment"> * sigmaY), and if `sigmaY == 0`, OpenCV uses the same value as `sigmaX`.</span></div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;<span class="comment"> * @param ksize   Size of Gaussian kernel (must be odd and positive in each</span></div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;<span class="comment"> *                dimension).</span></div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;<span class="comment"> * @param sigmaX  Gaussian kernel standard deviation in the X direction.</span></div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;<span class="comment"> * @param sigmaY  Gaussian kernel standard deviation in the Y direction</span></div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;<span class="comment"> *                (default is 0 which indicated this should be the same as</span></div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;<span class="comment"> *                sigmaX).</span></div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;<span class="comment"> * @return Callable that applies Gaussian blur.</span></div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;<span class="comment"> * \ingroup spatial_utilities</span></div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00812"></a><span class="lineno"><a class="line" href="group__spatial__utilities.html#gab0a98d687a0d050665ad8fa3bdb58c16">  812</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__spatial__utilities.html#gab0a98d687a0d050665ad8fa3bdb58c16">gaussian_blur</a>(cv::Size ksize, <span class="keywordtype">double</span> sigmaX, <span class="keywordtype">double</span> sigmaY = 0) {</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;    cv::GaussianBlur(in, out, ksize, sigmaX, sigmaY);</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;  };</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;}</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;<span class="comment"> * @brief Apply the Sobel operator to compute image gradients.</span></div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;<span class="comment"> * Computes the first, second, or mixed derivatives of an image using</span></div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;<span class="comment"> * `cv::Sobel`. Useful for detecting edges or computing gradient magnitude</span></div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;<span class="comment"> * and direction.</span></div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;<span class="comment"> * The Sobel operator is a discrete differentiation kernel, combining Gaussian</span></div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;<span class="comment"> * smoothing and differentiation.</span></div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;<span class="comment"> * @param dx        Order of the derivative in the x-direction (e.g. 1 for </span></div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;<span class="comment"> *                  ∂/∂x).</span></div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;<span class="comment"> * @param dy        Order of the derivative in the y-direction (e.g. 0 for</span></div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;<span class="comment"> *                  ∂/∂x only).</span></div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;<span class="comment"> * @param ksize     Size of the extended Sobel kernel (must be 1, 3, 5, or 7).</span></div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;<span class="comment"> * @param scale     Optional scaling factor applied to the derivative</span></div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;<span class="comment"> *                  (default 1.0).</span></div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;<span class="comment"> * @param delta     Optional bias added to the result (default is 0.0).</span></div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;<span class="comment"> * @param ddepth    Desired output depth (e.g. `CV_16S`, `CV_32F`,</span></div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="comment"> *                  or -1 to match input).</span></div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;<span class="comment"> * @return Callable that applies the Sobel operator.</span></div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;<span class="comment"> * \ingroup spatial_utilities</span></div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00844"></a><span class="lineno"><a class="line" href="group__spatial__utilities.html#ga441d30f3d3a7a414a01e73fd947b4f2f">  844</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code" href="group__spatial__utilities.html#ga441d30f3d3a7a414a01e73fd947b4f2f">sobel</a>(<span class="keywordtype">int</span> dx, <span class="keywordtype">int</span> dy, <span class="keywordtype">int</span> ksize = 3, <span class="keywordtype">double</span> scale = 1.0,</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;                  <span class="keywordtype">double</span> delta = 0.0, <span class="keywordtype">int</span> ddepth = -1) {</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    cv::Sobel(in, out, ddepth, dx, dy, ksize, scale, delta);</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;  };</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;}</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160; </div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;}  <span class="comment">// namespace pcv</span></div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160; </div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// PIPELINE_CV_H_</span></div>
 <div class="ttc" id="agroup__complex__domain__operations_html_ga1e4de76aa8b71940aec85c35d6c52649"><div class="ttname"><a href="group__complex__domain__operations.html#ga1e4de76aa8b71940aec85c35d6c52649">pcv::power_spectrum</a></div><div class="ttdeci">auto power_spectrum(bool log_scale=true, double epsilon=1e-12)</div><div class="ttdoc">Power spectrum |F|^2 for complex images, optionally log scaled.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00492">PipelineCv.h:492</a></div></div>
 <div class="ttc" id="agroup__complex__domain__operations_html_ga2c726c851531e8352d679109cbe5a8da"><div class="ttname"><a href="group__complex__domain__operations.html#ga2c726c851531e8352d679109cbe5a8da">pcv::magnitude</a></div><div class="ttdeci">auto magnitude()</div><div class="ttdoc">Magnitude of a 2-channel complex image: sqrt(real^2 + imag^2).</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00442">PipelineCv.h:442</a></div></div>
 <div class="ttc" id="agroup__complex__domain__operations_html_ga3acce10e0743ec909dac4f7c0e89d8bd"><div class="ttname"><a href="group__complex__domain__operations.html#ga3acce10e0743ec909dac4f7c0e89d8bd">pcv::complex_multiply</a></div><div class="ttdeci">auto complex_multiply(const cv::Mat &amp;other)</div><div class="ttdoc">Complex multiplication of two 2-channel images.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00522">PipelineCv.h:522</a></div></div>
@@ -870,8 +951,9 @@ $(document).ready(function(){initNavTree('PipelineCv_8h_source.html',''); initRe
 <div class="ttc" id="agroup__elementwise__operations_html_ga10b0303f9b7b8ba2b9803747c0ff6554"><div class="ttname"><a href="group__elementwise__operations.html#ga10b0303f9b7b8ba2b9803747c0ff6554">pcv::multiply</a></div><div class="ttdeci">auto multiply(const cv::Mat &amp;other, double scale=1.0)</div><div class="ttdoc">Element-wise multiplication with optional scale.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00384">PipelineCv.h:384</a></div></div>
 <div class="ttc" id="agroup__elementwise__operations_html_gaa9d57b1103fae42f27b8c814fa272ab0"><div class="ttname"><a href="group__elementwise__operations.html#gaa9d57b1103fae42f27b8c814fa272ab0">pcv::divide</a></div><div class="ttdeci">auto divide(const cv::Mat &amp;other, double scale=1.0)</div><div class="ttdoc">Element-wise division with optional scale.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00401">PipelineCv.h:401</a></div></div>
 <div class="ttc" id="agroup__elementwise__operations_html_gaedc43d4473bb033c7f6761be3be2f19b"><div class="ttname"><a href="group__elementwise__operations.html#gaedc43d4473bb033c7f6761be3be2f19b">pcv::add</a></div><div class="ttdeci">auto add(const cv::Mat &amp;other, const cv::Scalar &amp;alpha=cv::Scalar(1.0), const cv::Scalar &amp;beta=cv::Scalar(1.0), const cv::Scalar &amp;gamma=cv::Scalar(0.0))</div><div class="ttdoc">Weighted sum: alpha * in + beta * other + gamma.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00347">PipelineCv.h:347</a></div></div>
-<div class="ttc" id="agroup__fourier__frequency__domain__utilities_html_ga3241537364b8030a1123588349495b3c"><div class="ttname"><a href="group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c">pcv::fft_shift</a></div><div class="ttdeci">auto fft_shift()</div><div class="ttdoc">Swap DFT quadrants so that the zero-frequency component moves to the center.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00617">PipelineCv.h:617</a></div></div>
+<div class="ttc" id="agroup__fourier__frequency__domain__utilities_html_ga3241537364b8030a1123588349495b3c"><div class="ttname"><a href="group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c">pcv::fft_shift</a></div><div class="ttdeci">auto fft_shift()</div><div class="ttdoc">Swap DFT quadrants so that the zero-frequency component moves to the center.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00637">PipelineCv.h:637</a></div></div>
 <div class="ttc" id="agroup__fourier__frequency__domain__utilities_html_ga459e360dfb8e5614bf654161ee9c2ccf"><div class="ttname"><a href="group__fourier__frequency__domain__utilities.html#ga459e360dfb8e5614bf654161ee9c2ccf">pcv::dft</a></div><div class="ttdeci">auto dft(int flags=0)</div><div class="ttdoc">Discrete Fourier Transform producing complex output.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00599">PipelineCv.h:599</a></div></div>
+<div class="ttc" id="agroup__fourier__frequency__domain__utilities_html_ga5da2c3c5152ea2cdc9cb78a56c95a136"><div class="ttname"><a href="group__fourier__frequency__domain__utilities.html#ga5da2c3c5152ea2cdc9cb78a56c95a136">pcv::idft</a></div><div class="ttdeci">auto idft(int flags=cv::DFT_SCALE)</div><div class="ttdoc">Inverse Discrete Fourier Transform producing real output.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00619">PipelineCv.h:619</a></div></div>
 <div class="ttc" id="agroup__fourier__frequency__domain__utilities_html_ga95848c5b46425e2dce5c2ee584ba6cd9"><div class="ttname"><a href="group__fourier__frequency__domain__utilities.html#ga95848c5b46425e2dce5c2ee584ba6cd9">pcv::pad_to_even</a></div><div class="ttdeci">auto pad_to_even()</div><div class="ttdoc">Pad image to even dimensions using a constant (zero) border.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00578">PipelineCv.h:578</a></div></div>
 <div class="ttc" id="agroup__scalar__value__transforms_html_ga135d45c8988988f4eb32b6350a4c284c"><div class="ttname"><a href="group__scalar__value__transforms.html#ga135d45c8988988f4eb32b6350a4c284c">pcv::multiply_scalar</a></div><div class="ttdeci">auto multiply_scalar(double scale)</div><div class="ttdoc">Multiply all pixels by a scalar.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00203">PipelineCv.h:203</a></div></div>
 <div class="ttc" id="agroup__scalar__value__transforms_html_ga1ac8fd4e79e9f8b80aad59207541c7a7"><div class="ttname"><a href="group__scalar__value__transforms.html#ga1ac8fd4e79e9f8b80aad59207541c7a7">pcv::clamp</a></div><div class="ttdeci">auto clamp(double minVal=0.0, double maxVal=1.0, bool preserve_type=true)</div><div class="ttdoc">Clamp pixel values to [minVal, maxVal], with optional type preservation.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00275">PipelineCv.h:275</a></div></div>
@@ -880,9 +962,11 @@ $(document).ready(function(){initNavTree('PipelineCv_8h_source.html',''); initRe
 <div class="ttc" id="agroup__scalar__value__transforms_html_gabbe5f90c2931e9c23dd99fd0a50ba004"><div class="ttname"><a href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">pcv::log</a></div><div class="ttdeci">auto log()</div><div class="ttdoc">Natural logarithm of (in + 1).</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00300">PipelineCv.h:300</a></div></div>
 <div class="ttc" id="agroup__scalar__value__transforms_html_gada98064c858990633209129d89811b49"><div class="ttname"><a href="group__scalar__value__transforms.html#gada98064c858990633209129d89811b49">pcv::normalize</a></div><div class="ttdeci">auto normalize(double a=0.0, double b=1.0, int normType=cv::NORM_MINMAX, int dtype=-1)</div><div class="ttdoc">Normalize with OpenCV's cv::normalize.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00321">PipelineCv.h:321</a></div></div>
 <div class="ttc" id="agroup__scalar__value__transforms_html_gafb58422fd2d33b99322c874d8f05b915"><div class="ttname"><a href="group__scalar__value__transforms.html#gafb58422fd2d33b99322c874d8f05b915">pcv::divide_scalar</a></div><div class="ttdeci">auto divide_scalar(double scale)</div><div class="ttdoc">Divide all pixels by a scalar.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00219">PipelineCv.h:219</a></div></div>
-<div class="ttc" id="agroup__spatial__utilities_html_ga1401b3b2472995bb2ebc75e507eae033"><div class="ttname"><a href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">pcv::warp_affine</a></div><div class="ttdeci">auto warp_affine(double angle_degrees, double scale, double tx, double ty, cv::Size dsize=cv::Size(), int flags=cv::INTER_LINEAR, int borderMode=cv::BORDER_CONSTANT, const cv::Scalar &amp;borderValue=cv::Scalar())</div><div class="ttdoc">Affine warp defined by rotation (deg), scale, and translations.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00701">PipelineCv.h:701</a></div></div>
-<div class="ttc" id="agroup__spatial__utilities_html_ga7d0b69a57c1014ea621efc017c70de3b"><div class="ttname"><a href="group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b">pcv::roll</a></div><div class="ttdeci">auto roll(int shift_rows, int shift_cols)</div><div class="ttdoc">Circularly shift (roll) rows and columns.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00654">PipelineCv.h:654</a></div></div>
-<div class="ttc" id="agroup__spatial__utilities_html_gaa83d2f2c1972dbc934d6834bf0be1fd0"><div class="ttname"><a href="group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0">pcv::warp_polar</a></div><div class="ttdeci">auto warp_polar(bool log_polar=false, cv::Point2f center={-1.f, -1.f}, double maxRadius=-1.0, cv::Size dsize=cv::Size(), int flags=cv::INTER_LINEAR)</div><div class="ttdoc">Polar (or log-polar) warp from Cartesian input using cv::warpPolar.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00739">PipelineCv.h:739</a></div></div>
+<div class="ttc" id="agroup__spatial__utilities_html_ga1401b3b2472995bb2ebc75e507eae033"><div class="ttname"><a href="group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033">pcv::warp_affine</a></div><div class="ttdeci">auto warp_affine(double angle_degrees, double scale, double tx, double ty, cv::Size dsize=cv::Size(), int flags=cv::INTER_LINEAR, int borderMode=cv::BORDER_CONSTANT, const cv::Scalar &amp;borderValue=cv::Scalar())</div><div class="ttdoc">Affine warp defined by rotation (deg), scale, and translations.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00721">PipelineCv.h:721</a></div></div>
+<div class="ttc" id="agroup__spatial__utilities_html_ga441d30f3d3a7a414a01e73fd947b4f2f"><div class="ttname"><a href="group__spatial__utilities.html#ga441d30f3d3a7a414a01e73fd947b4f2f">pcv::sobel</a></div><div class="ttdeci">auto sobel(int dx, int dy, int ksize=3, double scale=1.0, double delta=0.0, int ddepth=-1)</div><div class="ttdoc">Apply the Sobel operator to compute image gradients.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00844">PipelineCv.h:844</a></div></div>
+<div class="ttc" id="agroup__spatial__utilities_html_ga7d0b69a57c1014ea621efc017c70de3b"><div class="ttname"><a href="group__spatial__utilities.html#ga7d0b69a57c1014ea621efc017c70de3b">pcv::roll</a></div><div class="ttdeci">auto roll(int shift_rows, int shift_cols)</div><div class="ttdoc">Circularly shift (roll) rows and columns.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00674">PipelineCv.h:674</a></div></div>
+<div class="ttc" id="agroup__spatial__utilities_html_gaa83d2f2c1972dbc934d6834bf0be1fd0"><div class="ttname"><a href="group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0">pcv::warp_polar</a></div><div class="ttdeci">auto warp_polar(bool log_polar=false, cv::Point2f center={-1.f, -1.f}, double maxRadius=-1.0, cv::Size dsize=cv::Size(), int flags=cv::INTER_LINEAR)</div><div class="ttdoc">Polar (or log-polar) warp from Cartesian input using cv::warpPolar.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00759">PipelineCv.h:759</a></div></div>
+<div class="ttc" id="agroup__spatial__utilities_html_gab0a98d687a0d050665ad8fa3bdb58c16"><div class="ttname"><a href="group__spatial__utilities.html#gab0a98d687a0d050665ad8fa3bdb58c16">pcv::gaussian_blur</a></div><div class="ttdeci">auto gaussian_blur(cv::Size ksize, double sigmaX, double sigmaY=0)</div><div class="ttdoc">Apply a Gaussian blur (low-pass filter) to the image.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00812">PipelineCv.h:812</a></div></div>
 <div class="ttc" id="agroup__type__and__channel__adapters_html_ga06bab21407dca52598cd41a557d152b0"><div class="ttname"><a href="group__type__and__channel__adapters.html#ga06bab21407dca52598cd41a557d152b0">pcv::imag</a></div><div class="ttdeci">auto imag()</div><div class="ttdoc">Extract imaginary part from a 2-channel complex image.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00182">PipelineCv.h:182</a></div></div>
 <div class="ttc" id="agroup__type__and__channel__adapters_html_ga1017b7312073871b14b3d95f4678afc1"><div class="ttname"><a href="group__type__and__channel__adapters.html#ga1017b7312073871b14b3d95f4678afc1">pcv::to_float</a></div><div class="ttdeci">auto to_float(double scale=1.0/255.0)</div><div class="ttdoc">Convert image to 32-bit float (CV_32F), with optional scaling.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00065">PipelineCv.h:65</a></div></div>
 <div class="ttc" id="agroup__type__and__channel__adapters_html_ga1eaf2bddd565ca2685bf50de5afa166d"><div class="ttname"><a href="group__type__and__channel__adapters.html#ga1eaf2bddd565ca2685bf50de5afa166d">pcv::to_gray</a></div><div class="ttdeci">auto to_gray()</div><div class="ttdoc">Convert color or color+annotation to single-channel grayscale.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00128">PipelineCv.h:128</a></div></div>
