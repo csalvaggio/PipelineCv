@@ -26,7 +26,7 @@ int main() {
   // Compute the properly-scaled inverse Fourier transform (recovered image)
   cv::Mat recovered =
     spectrum |
-    pcv::dft(cv::DFT_INVERSE + cv::DFT_SCALE + cv::DFT_REAL_OUTPUT) |
+    pcv::idft() |
     pcv::to_uint8();
 
   // Display the workflow images

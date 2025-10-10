@@ -605,6 +605,26 @@ inline auto dft(int flags = 0) {
 }
 
 /**
+ * @brief Inverse Discrete Fourier Transform producing real output.
+ *
+ * The default flag includes `cv::DFT_SCALE` to scale the result by `1/N` (for
+ * orthonormality).
+ *
+ * @param flags Defaults to `cv::DFT_SCALE`. Note that `cv::DFT_INVERSE`
+ *              and `cv::DFT_REAL_OUTPUT` are always applied.
+ * @return Callable performing the inverse DFT.
+ *
+ * \ingroup fourier_frequency_domain_utilities
+ */
+inline auto idft(int flags = cv::DFT_SCALE) {
+  return [=](const cv::Mat& in) {
+    cv::Mat out;
+    cv::dft(in, out, flags | cv::DFT_INVERSE | cv::DFT_REAL_OUTPUT);
+    return out;
+  };
+}
+
+/**
  * @brief Swap DFT quadrants so that the zero-frequency component moves to
  * the center.
  *
@@ -765,6 +785,67 @@ inline auto warp_polar(bool log_polar = false,
     cv::Mat out;
     out = cv::Mat::zeros(outSize, in.type());
     cv::warpPolar(in, out, outSize, c, mr, flags | mode);
+    return out;
+  };
+}
+
+/**
+ * @brief Apply a Gaussian blur (low-pass filter) to the image.
+ *
+ * Uses OpenCV's `cv::GaussianBlur` with the specified kernel size and standard
+ * deviations. This is useful for noise reduction, anti-aliasing, or preparing
+ * an image for edge detection.
+ *
+ * The function supports anisotropic filtering (different values for sigmaX and
+ * sigmaY), and if `sigmaY == 0`, OpenCV uses the same value as `sigmaX`.
+ *
+ * @param ksize   Size of Gaussian kernel (must be odd and positive in each
+ *                dimension).
+ * @param sigmaX  Gaussian kernel standard deviation in the X direction.
+ * @param sigmaY  Gaussian kernel standard deviation in the Y direction
+ *                (default is 0 which indicated this should be the same as
+ *                sigmaX).
+ * @return Callable that applies Gaussian blur.
+ *
+ * \ingroup spatial_utilities
+ */
+inline auto gaussian_blur(cv::Size ksize, double sigmaX, double sigmaY = 0) {
+  return [=](const cv::Mat& in) {
+    cv::Mat out;
+    cv::GaussianBlur(in, out, ksize, sigmaX, sigmaY);
+    return out;
+  };
+}
+
+/**
+ * @brief Apply the Sobel operator to compute image gradients.
+ *
+ * Computes the first, second, or mixed derivatives of an image using
+ * `cv::Sobel`. Useful for detecting edges or computing gradient magnitude
+ * and direction.
+ *
+ * The Sobel operator is a discrete differentiation kernel, combining Gaussian
+ * smoothing and differentiation.
+ *
+ * @param dx        Order of the derivative in the x-direction (e.g. 1 for 
+ *                  ∂/∂x).
+ * @param dy        Order of the derivative in the y-direction (e.g. 0 for
+ *                  ∂/∂x only).
+ * @param ksize     Size of the extended Sobel kernel (must be 1, 3, 5, or 7).
+ * @param scale     Optional scaling factor applied to the derivative
+ *                  (default 1.0).
+ * @param delta     Optional bias added to the result (default is 0.0).
+ * @param ddepth    Desired output depth (e.g. `CV_16S`, `CV_32F`,
+ *                  or -1 to match input).
+ * @return Callable that applies the Sobel operator.
+ *
+ * \ingroup spatial_utilities
+ */
+inline auto sobel_filter(int dx, int dy, int ksize = 3, double scale = 1.0,
+                         double delta = 0.0, int ddepth = -1) {
+  return [=](const cv::Mat& in) {
+    cv::Mat out;
+    cv::Sobel(in, out, ddepth, dx, dy, ksize, scale, delta);
     return out;
   };
 }
