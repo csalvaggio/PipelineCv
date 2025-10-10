@@ -38,7 +38,7 @@ To generate the Doxygen documentation locally:
 doxygen Doxyfile
 ```
 
-See the online documentation for complete [API reference](https://home.cis.rit.edu/~cnspci/other/apis/pcv/).
+See the online documentation for complete [API reference](https://home.cis.rit.edu/~cnspci/other/api_references/pcv/).
 
 ## Error Handling
 
