@@ -162,21 +162,21 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Callable producing complex quotient.</dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>Both inputs must have 2 channels. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00550">550</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                                                                       {</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    CV_Assert(in.channels() == 2 &amp;&amp; other.channels() == 2);</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    std::vector&lt;cv::Mat&gt; a(2), b(2), result(2);</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;    cv::split(in, a);</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;    cv::split(other, b);</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    cv::Mat denominator = b[0].mul(b[0]) + b[1].mul(b[1]) + epsilon;</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    result[0] = (a[0].mul(b[0]) + a[1].mul(b[1])) / denominator;  <span class="comment">// real</span></div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    result[1] = (a[1].mul(b[0]) - a[0].mul(b[1])) / denominator;  <span class="comment">// imag</span></div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    cv::merge(result, out);</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;  };</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00716">716</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                                                                       {</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    CV_Assert(in.channels() == 2 &amp;&amp; other.channels() == 2);</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    std::vector&lt;cv::Mat&gt; a(2), b(2), result(2);</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    cv::split(in, a);</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    cv::split(other, b);</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    cv::Mat denominator = b[0].mul(b[0]) + b[1].mul(b[1]) + epsilon;</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;    result[0] = (a[0].mul(b[0]) + a[1].mul(b[1])) / denominator;  <span class="comment">// real</span></div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;    result[1] = (a[1].mul(b[0]) - a[0].mul(b[1])) / denominator;  <span class="comment">// imag</span></div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    cv::merge(result, out);</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;  };</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -215,20 +215,20 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Callable producing complex product.</dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>Both inputs must have 2 channels. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00522">522</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                                                 {</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    CV_Assert(in.channels() == 2 &amp;&amp; other.channels() == 2);</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    std::vector&lt;cv::Mat&gt; a(2), b(2), result(2);</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    cv::split(in, a);</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    cv::split(other, b);</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    result[0] = a[0].mul(b[0]) - a[1].mul(b[1]);  <span class="comment">// real</span></div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    result[1] = a[0].mul(b[1]) + a[1].mul(b[0]);  <span class="comment">// imag</span></div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    cv::merge(result, out);</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;  };</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00688">688</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;                                                 {</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    CV_Assert(in.channels() == 2 &amp;&amp; other.channels() == 2);</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    std::vector&lt;cv::Mat&gt; a(2), b(2), result(2);</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    cv::split(in, a);</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    cv::split(other, b);</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    result[0] = a[0].mul(b[0]) - a[1].mul(b[1]);  <span class="comment">// real</span></div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;    result[1] = a[0].mul(b[1]) + a[1].mul(b[0]);  <span class="comment">// imag</span></div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;    cv::merge(result, out);</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;  };</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -259,18 +259,18 @@ Functions</h2></td></tr>
 <dl class="section pre"><dt>Precondition</dt><dd><code>in.channels() == 2</code>. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable negating the imaginary channel. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00421">421</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                        {</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    CV_Assert(in.channels() == 2);</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    std::vector&lt;cv::Mat&gt; ch(2);</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    cv::split(in, ch);</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    ch[1] = -ch[1];</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    cv::merge(ch, out);</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;  };</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00587">587</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;                        {</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;    CV_Assert(in.channels() == 2);</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;    std::vector&lt;cv::Mat&gt; ch(2);</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    cv::split(in, ch);</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;    ch[1] = -ch[1];</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    cv::merge(ch, out);</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;  };</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -301,18 +301,18 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Callable producing single-channel magnitude.</dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd><code>in.channels() == 2</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00442">442</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                        {</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    CV_Assert(in.channels() == 2);</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    std::vector&lt;cv::Mat&gt; p(2);</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    cv::split(in, p);</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <a class="code" href="group__complex__domain__operations.html#ga2c726c851531e8352d679109cbe5a8da">cv::magnitude</a>(p[0], p[1], out);</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  };</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;}</div>
-<div class="ttc" id="agroup__complex__domain__operations_html_ga2c726c851531e8352d679109cbe5a8da"><div class="ttname"><a href="group__complex__domain__operations.html#ga2c726c851531e8352d679109cbe5a8da">pcv::magnitude</a></div><div class="ttdeci">auto magnitude()</div><div class="ttdoc">Magnitude of a 2-channel complex image: sqrt(real^2 + imag^2).</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00442">PipelineCv.h:442</a></div></div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00608">608</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;                        {</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    CV_Assert(in.channels() == 2);</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    std::vector&lt;cv::Mat&gt; p(2);</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    cv::split(in, p);</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    <a class="code" href="group__complex__domain__operations.html#ga2c726c851531e8352d679109cbe5a8da">cv::magnitude</a>(p[0], p[1], out);</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;  };</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;}</div>
+<div class="ttc" id="agroup__complex__domain__operations_html_ga2c726c851531e8352d679109cbe5a8da"><div class="ttname"><a href="group__complex__domain__operations.html#ga2c726c851531e8352d679109cbe5a8da">pcv::magnitude</a></div><div class="ttdeci">auto magnitude()</div><div class="ttdoc">Magnitude of a 2-channel complex image: sqrt(real^2 + imag^2).</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00608">PipelineCv.h:608</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -351,25 +351,25 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Callable producing phase image.</dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd><code>in.channels() == 2</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00466">466</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                                        {</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    CV_Assert(in.channels() == 2);</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    std::vector&lt;cv::Mat&gt; p(2);</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    cv::split(in, p);</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    <a class="code" href="group__complex__domain__operations.html#ga67cab92dfc172ec1f057dc0f9e185ac4">cv::phase</a>(p[0], p[1], out, degrees);</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> half = degrees ? 180.0 : CV_PI;</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> period = degrees ? 360.0 : 2.0 * CV_PI;</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    cv::Mat mask = (out &gt;= half);</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    <a class="code" href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">cv::subtract</a>(out, period, out, mask);</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;  };</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;}</div>
-<div class="ttc" id="agroup__complex__domain__operations_html_ga67cab92dfc172ec1f057dc0f9e185ac4"><div class="ttname"><a href="group__complex__domain__operations.html#ga67cab92dfc172ec1f057dc0f9e185ac4">pcv::phase</a></div><div class="ttdeci">auto phase(bool degrees=false)</div><div class="ttdoc">Phase/angle of a 2-channel complex image in (-π, π].</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00466">PipelineCv.h:466</a></div></div>
-<div class="ttc" id="agroup__elementwise__operations_html_ga0bb1b2b9ae7f9b0f8267ccc2610e78f6"><div class="ttname"><a href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">pcv::subtract</a></div><div class="ttdeci">auto subtract(const cv::Mat &amp;other, double scale=1.0)</div><div class="ttdoc">Element-wise subtraction: in - other, with optional scaling.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00366">PipelineCv.h:366</a></div></div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00632">632</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;                                        {</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;    CV_Assert(in.channels() == 2);</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;    std::vector&lt;cv::Mat&gt; p(2);</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;    cv::split(in, p);</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    <a class="code" href="group__complex__domain__operations.html#ga67cab92dfc172ec1f057dc0f9e185ac4">cv::phase</a>(p[0], p[1], out, degrees);</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> half = degrees ? 180.0 : CV_PI;</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> period = degrees ? 360.0 : 2.0 * CV_PI;</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    cv::Mat mask = (out &gt;= half);</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <a class="code" href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">cv::subtract</a>(out, period, out, mask);</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;  };</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;}</div>
+<div class="ttc" id="agroup__complex__domain__operations_html_ga67cab92dfc172ec1f057dc0f9e185ac4"><div class="ttname"><a href="group__complex__domain__operations.html#ga67cab92dfc172ec1f057dc0f9e185ac4">pcv::phase</a></div><div class="ttdeci">auto phase(bool degrees=false)</div><div class="ttdoc">Phase/angle of a 2-channel complex image in (-π, π].</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00632">PipelineCv.h:632</a></div></div>
+<div class="ttc" id="agroup__elementwise__operations_html_ga0bb1b2b9ae7f9b0f8267ccc2610e78f6"><div class="ttname"><a href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">pcv::subtract</a></div><div class="ttdeci">auto subtract(const cv::Mat &amp;other, double scale=1.0)</div><div class="ttdoc">Element-wise subtraction: in - other, with optional scaling.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00532">PipelineCv.h:532</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00366">pcv::subtract()</a>.</p>
+<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00532">pcv::subtract()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -423,28 +423,28 @@ Here is the call graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>Callable producing single-channel power spectrum image.</dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd><code>in.channels() == 2</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00492">492</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;                                                                          {</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;  <span class="comment">// Power spectrum: |F|^2 (log optional)</span></div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    CV_Assert(in.channels() == 2);</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    std::vector&lt;cv::Mat&gt; ch(2);</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    cv::split(in, ch);</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    <a class="code" href="group__elementwise__operations.html#ga10b0303f9b7b8ba2b9803747c0ff6554">cv::multiply</a>(ch[0], ch[0], out);</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    cv::Mat tmp;</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    <a class="code" href="group__elementwise__operations.html#ga10b0303f9b7b8ba2b9803747c0ff6554">cv::multiply</a>(ch[1], ch[1], tmp);</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    out += tmp;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    <span class="keywordflow">if</span> (log_scale) {</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;      <a class="code" href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">cv::log</a>(out + epsilon, out);</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    }</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  };</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;}</div>
-<div class="ttc" id="agroup__elementwise__operations_html_ga10b0303f9b7b8ba2b9803747c0ff6554"><div class="ttname"><a href="group__elementwise__operations.html#ga10b0303f9b7b8ba2b9803747c0ff6554">pcv::multiply</a></div><div class="ttdeci">auto multiply(const cv::Mat &amp;other, double scale=1.0)</div><div class="ttdoc">Element-wise multiplication with optional scale.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00384">PipelineCv.h:384</a></div></div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00658">658</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;                                                                          {</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  <span class="comment">// Power spectrum: |F|^2 (log optional)</span></div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    CV_Assert(in.channels() == 2);</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    std::vector&lt;cv::Mat&gt; ch(2);</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    cv::split(in, ch);</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <a class="code" href="group__elementwise__operations.html#ga10b0303f9b7b8ba2b9803747c0ff6554">cv::multiply</a>(ch[0], ch[0], out);</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    cv::Mat tmp;</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    <a class="code" href="group__elementwise__operations.html#ga10b0303f9b7b8ba2b9803747c0ff6554">cv::multiply</a>(ch[1], ch[1], tmp);</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    out += tmp;</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    <span class="keywordflow">if</span> (log_scale) {</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;      <a class="code" href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">cv::log</a>(out + epsilon, out);</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    }</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;  };</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;}</div>
+<div class="ttc" id="agroup__elementwise__operations_html_ga10b0303f9b7b8ba2b9803747c0ff6554"><div class="ttname"><a href="group__elementwise__operations.html#ga10b0303f9b7b8ba2b9803747c0ff6554">pcv::multiply</a></div><div class="ttdeci">auto multiply(const cv::Mat &amp;other, double scale=1.0)</div><div class="ttdoc">Element-wise multiplication with optional scale.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00550">PipelineCv.h:550</a></div></div>
 <div class="ttc" id="agroup__scalar__value__transforms_html_gabbe5f90c2931e9c23dd99fd0a50ba004"><div class="ttname"><a href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">pcv::log</a></div><div class="ttdeci">auto log()</div><div class="ttdoc">Natural logarithm of (in + 1).</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00300">PipelineCv.h:300</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00300">pcv::log()</a>, and <a class="el" href="PipelineCv_8h_source.html#l00384">pcv::multiply()</a>.</p>
+<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00300">pcv::log()</a>, and <a class="el" href="PipelineCv_8h_source.html#l00550">pcv::multiply()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

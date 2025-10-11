@@ -327,6 +327,172 @@ inline auto normalize(double a = 0.0, double b = 1.0,
   };
 }
 
+/**
+ * @brief Contrast stretch using histogram percentiles.
+ *
+ * Linearly maps intensities so that `lower_percent` of values are clipped to
+ * black and `upper_percent` to white. Works on grayscale or color images,
+ * supporting 8U, 16U, and 32F depths.
+ *
+ * @param lower_percent  Lower tail cutoff (percentage)
+ * @param upper_percent  Upper tail cutoff (percentage)
+ * @param per_channel    Stretch each channel independently (else
+ *                       luminance-based)
+ * @return Callable performing contrast stretch.
+ *
+ * \ingroup scalar_value_transforms
+ */
+inline auto linear_contrast_stretch(float lower_percent = 2.0f,
+                                    float upper_percent = 98.0f,
+                                    bool per_channel = true) {
+  return [=](const cv::Mat& in) {
+    CV_Assert(in.channels() == 1 || in.channels() == 3);
+    CV_Assert(in.depth() == CV_8U || in.depth() == CV_16U ||
+              in.depth() == CV_32F);
+
+    const int bins = (in.depth() == CV_8U)    ? 256
+                     : (in.depth() == CV_16U) ? 65536
+                                              : 65536;
+    const float range[] = {0.0f, static_cast<float>(bins)};
+    const float* histRange = {range};
+
+    auto stretch_channel = [&](const cv::Mat& ch) {
+      cv::Mat hist;
+      cv::calcHist(&ch, 1, 0, cv::Mat(), hist, 1, &bins, &histRange, true,
+                   false);
+      std::vector<float> cdf(bins);
+      cdf[0] = hist.at<float>(0);
+      for (int i = 1; i < bins; ++i) cdf[i] = cdf[i - 1] + hist.at<float>(i);
+      float total = cdf.back();
+      float lo_thresh = lower_percent / 100.0f * total;
+      float hi_thresh = upper_percent / 100.0f * total;
+
+      int lo = 0, hi = bins - 1;
+      for (int i = 0; i < bins; ++i)
+        if (cdf[i] >= lo_thresh) {
+          lo = i;
+          break;
+        }
+      for (int i = bins - 1; i >= 0; --i)
+        if (cdf[i] <= hi_thresh) {
+          hi = i;
+          break;
+        }
+
+      cv::Mat out;
+      if (in.depth() == CV_32F) {
+        out = (ch - float(lo)) / float(hi - lo);
+        cv::min(cv::max(out, 0.0f), 1.0f, out);
+      } else {
+        double scale = (hi == lo) ? 1.0 : double(bins - 1) / (hi - lo);
+        ch.convertTo(out, ch.type(), scale, -lo * scale);
+        cv::threshold(out, out, bins - 1, bins - 1, cv::THRESH_TRUNC);
+        cv::threshold(out, out, 0, 0, cv::THRESH_TOZERO);
+      }
+      return out;
+    };
+
+    if (in.channels() == 1) return stretch_channel(in);
+
+    std::vector<cv::Mat> ch;
+    cv::split(in, ch);
+
+    if (per_channel) {
+      for (auto& c : ch) c = stretch_channel(c);
+    } else {
+      // Luminance approach
+      cv::Mat lum;
+      cv::cvtColor(in, lum, cv::COLOR_BGR2GRAY);
+      cv::Mat stretch_lum = stretch_channel(lum);
+
+      std::vector<cv::Mat> ch_f(3);
+      for (int i = 0; i < 3; ++i) ch[i].convertTo(ch_f[i], CV_32F);
+      cv::Mat lum_f, stretch_f;
+      lum.convertTo(lum_f, CV_32F);
+      stretch_lum.convertTo(stretch_f, CV_32F);
+      cv::Mat ratio = stretch_f / (lum_f + 1e-6f);
+
+      for (int i = 0; i < 3; ++i) ch_f[i] = ch_f[i].mul(ratio);
+
+      for (int i = 0; i < 3; ++i) ch_f[i].convertTo(ch[i], in.depth());
+    }
+
+    cv::Mat out;
+    cv::merge(ch, out);
+    return out;
+  };
+}
+
+/**
+ * @brief Histogram equalization for contrast enhancement.
+ *
+ * Works on grayscale or color images (3-channel). For color inputs, performs
+ * per-channel equalization or luminance-based equalization in YCrCb space.
+ *
+ * Supports CV_8U, CV_16U, and CV_32F inputs. Output retains same type/depth.
+ * For float data, values are assumed in [0, 1] and scaled to 8-bit internally.
+ *
+ * @param per_channel  Apply equalization independently to each channel
+ *                     (default is true).
+ * @return Callable that performs histogram equalization.
+ *
+ * \ingroup scalar_value_transforms
+ */
+inline auto histogram_equalize_stretch(bool per_channel = true) {
+  return [=](const cv::Mat& in) {
+    CV_Assert(in.channels() == 1 || in.channels() == 3);
+    CV_Assert(in.depth() == CV_8U || in.depth() == CV_16U ||
+              in.depth() == CV_32F);
+
+    auto equalize_single_channel = [](const cv::Mat& ch) -> cv::Mat {
+      cv::Mat ch8u, eq;
+      if (ch.depth() == CV_8U)
+        ch8u = ch;
+      else if (ch.depth() == CV_16U)
+        ch.convertTo(ch8u, CV_8U, 1.0 / 256.0);  // scale 16U → 8U
+      else if (ch.depth() == CV_32F)
+        ch.convertTo(ch8u, CV_8U, 255.0);  // assume [0,1] float
+
+      cv::equalizeHist(ch8u, eq);
+
+      // Convert back to original type
+      cv::Mat out;
+      if (ch.depth() == CV_8U)
+        out = eq;
+      else if (ch.depth() == CV_16U)
+        eq.convertTo(out, CV_16U, 256.0);  // scale 8U → 16U
+      else if (ch.depth() == CV_32F)
+        eq.convertTo(out, CV_32F, 1.0 / 255.0);  // scale 8U → float
+      return out;
+    };
+
+    // Grayscale
+    if (in.channels() == 1) return equalize_single_channel(in);
+
+    // Color (3-channel)
+    std::vector<cv::Mat> ch;
+    cv::split(in, ch);
+
+    if (per_channel) {
+      for (auto& c : ch) c = equalize_single_channel(c);
+      cv::Mat out;
+      cv::merge(ch, out);
+      return out;
+    } else {
+      // Luminance equalization in YCrCb space
+      cv::Mat ycrcb, eq_ycrcb;
+      cv::cvtColor(in, ycrcb, cv::COLOR_BGR2YCrCb);
+      std::vector<cv::Mat> ych;
+      cv::split(ycrcb, ych);
+      ych[0] = equalize_single_channel(ych[0]);  // equalize Y only
+      cv::merge(ych, eq_ycrcb);
+      cv::Mat out;
+      cv::cvtColor(eq_ycrcb, out, cv::COLOR_YCrCb2BGR);
+      return out;
+    }
+  };
+}
+
 // ============================================================================
 // 3) Element-wise Arithmetic Operations
 // ============================================================================
@@ -790,6 +956,38 @@ inline auto warp_polar(bool log_polar = false,
 }
 
 /**
+ * @brief Warp a quadrilateral region to a new quadrilateral using
+ *        4-point correspondence.
+ *
+ * Computes the 3×3 homography from source→destination points and applies
+ * the perspective warp. Works with 8U/16U/32F images and preserves type.
+ *
+ * @param src_pts       Four source `Point2f` coordinates.
+ * @param dst_pts       Four destination `Point2f` coordinates.
+ * @param dsize         Output image size (default: same as input).
+ * @param flags         Interpolation flags (default: `cv::INTER_LINEAR`).
+ * @param borderMode    Border behavior (default: `cv::BORDER_CONSTANT`).
+ * @param borderValue   Fill value for out-of-bounds (default: 0).
+ * @return Callable that performs the full perspective warp.
+ *
+ * \ingroup spatial_utilities
+ */
+inline auto warp_quad(const std::vector<cv::Point2f>& src_pts,
+                      const std::vector<cv::Point2f>& dst_pts,
+                      cv::Size dsize = {}, int flags = cv::INTER_LINEAR,
+                      int borderMode = cv::BORDER_CONSTANT,
+                      const cv::Scalar& borderValue = cv::Scalar()) {
+  CV_Assert(src_pts.size() == 4 && dst_pts.size() == 4);
+  return [=](const cv::Mat& in) {
+    cv::Mat H = cv::getPerspectiveTransform(src_pts, dst_pts);
+    cv::Size target = (dsize.width > 0 && dsize.height > 0) ? dsize : in.size();
+    cv::Mat out;
+    cv::warpPerspective(in, out, H, target, flags, borderMode, borderValue);
+    return out;
+  };
+}
+
+/**
  * @brief Apply a Gaussian blur (low-pass filter) to the image.
  *
  * Uses OpenCV's `cv::GaussianBlur` with the specified kernel size and standard
@@ -827,7 +1025,7 @@ inline auto gaussian_blur(cv::Size ksize, double sigmaX, double sigmaY = 0) {
  * The Sobel operator is a discrete differentiation kernel, combining Gaussian
  * smoothing and differentiation.
  *
- * @param dx        Order of the derivative in the x-direction (e.g. 1 for 
+ * @param dx        Order of the derivative in the x-direction (e.g. 1 for
  *                  ∂/∂x).
  * @param dy        Order of the derivative in the y-direction (e.g. 0 for
  *                  ∂/∂x only).

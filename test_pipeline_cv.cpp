@@ -47,12 +47,5 @@ int main() {
       recovered);
   cv::waitKey(0);
 
-  filename = "/home/cnspci/src/cpp/rit/data/images/misc/lenna_grayscale.pgm";
-  src = cv::imread(filename, cv::IMREAD_GRAYSCALE);
-  if (src.empty()) {
-    std::cerr << "Failed to read image: " << filename << std::endl;
-    return EXIT_FAILURE;
-  }
-
   return EXIT_SUCCESS;
 }

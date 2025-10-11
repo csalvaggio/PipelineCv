@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['element_2dwise_20arithmetic_20operations_82',['Element-wise Arithmetic Operations',['../group__elementwise__operations.html',1,'']]]
+  ['element_2dwise_20arithmetic_20operations_88',['Element-wise Arithmetic Operations',['../group__elementwise__operations.html',1,'']]]
 ];

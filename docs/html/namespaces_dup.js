@@ -12,8 +12,10 @@ var namespaces_dup =
       [ "divide_scalar", "group__scalar__value__transforms.html#gafb58422fd2d33b99322c874d8f05b915", null ],
       [ "fft_shift", "group__fourier__frequency__domain__utilities.html#ga3241537364b8030a1123588349495b3c", null ],
       [ "gaussian_blur", "group__spatial__utilities.html#gab0a98d687a0d050665ad8fa3bdb58c16", null ],
+      [ "histogram_equalize_stretch", "group__scalar__value__transforms.html#ga5fdbf39fb9fc0831289048994a7ba5bb", null ],
       [ "idft", "group__fourier__frequency__domain__utilities.html#ga5da2c3c5152ea2cdc9cb78a56c95a136", null ],
       [ "imag", "group__type__and__channel__adapters.html#ga06bab21407dca52598cd41a557d152b0", null ],
+      [ "linear_contrast_stretch", "group__scalar__value__transforms.html#ga203d40a1485bcbc251d6a70a8b00c31d", null ],
       [ "log", "group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004", null ],
       [ "magnitude", "group__complex__domain__operations.html#ga2c726c851531e8352d679109cbe5a8da", null ],
       [ "multiply", "group__elementwise__operations.html#ga10b0303f9b7b8ba2b9803747c0ff6554", null ],
@@ -34,6 +36,7 @@ var namespaces_dup =
       [ "to_gray", "group__type__and__channel__adapters.html#ga1eaf2bddd565ca2685bf50de5afa166d", null ],
       [ "to_uint8", "group__type__and__channel__adapters.html#ga3af12c29a08fd9d71ecef5ac80406581", null ],
       [ "warp_affine", "group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033", null ],
-      [ "warp_polar", "group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0", null ]
+      [ "warp_polar", "group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0", null ],
+      [ "warp_quad", "group__spatial__utilities.html#ga9c69b6f9fa804a27d4a433c6da329f74", null ]
     ] ]
 ];

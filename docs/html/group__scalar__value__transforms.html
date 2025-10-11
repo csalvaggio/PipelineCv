@@ -103,6 +103,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gafb58422fd2d33b99322c874d8f05b915"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__scalar__value__transforms.html#gafb58422fd2d33b99322c874d8f05b915">pcv::divide_scalar</a> (double scale)</td></tr>
 <tr class="memdesc:gafb58422fd2d33b99322c874d8f05b915"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide all pixels by a scalar.  <a href="group__scalar__value__transforms.html#gafb58422fd2d33b99322c874d8f05b915">More...</a><br /></td></tr>
 <tr class="separator:gafb58422fd2d33b99322c874d8f05b915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5fdbf39fb9fc0831289048994a7ba5bb"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__scalar__value__transforms.html#ga5fdbf39fb9fc0831289048994a7ba5bb">pcv::histogram_equalize_stretch</a> (bool per_channel=true)</td></tr>
+<tr class="memdesc:ga5fdbf39fb9fc0831289048994a7ba5bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Histogram equalization for contrast enhancement.  <a href="group__scalar__value__transforms.html#ga5fdbf39fb9fc0831289048994a7ba5bb">More...</a><br /></td></tr>
+<tr class="separator:ga5fdbf39fb9fc0831289048994a7ba5bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga203d40a1485bcbc251d6a70a8b00c31d"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__scalar__value__transforms.html#ga203d40a1485bcbc251d6a70a8b00c31d">pcv::linear_contrast_stretch</a> (float lower_percent=2.0f, float upper_percent=98.0f, bool per_channel=true)</td></tr>
+<tr class="memdesc:ga203d40a1485bcbc251d6a70a8b00c31d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrast stretch using histogram percentiles.  <a href="group__scalar__value__transforms.html#ga203d40a1485bcbc251d6a70a8b00c31d">More...</a><br /></td></tr>
+<tr class="separator:ga203d40a1485bcbc251d6a70a8b00c31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabbe5f90c2931e9c23dd99fd0a50ba004"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">pcv::log</a> ()</td></tr>
 <tr class="memdesc:gabbe5f90c2931e9c23dd99fd0a50ba004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Natural logarithm of (in + 1).  <a href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">More...</a><br /></td></tr>
 <tr class="separator:gabbe5f90c2931e9c23dd99fd0a50ba004"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,9 +166,9 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">return</span> out;</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  };</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div>
-<div class="ttc" id="agroup__elementwise__operations_html_gaedc43d4473bb033c7f6761be3be2f19b"><div class="ttname"><a href="group__elementwise__operations.html#gaedc43d4473bb033c7f6761be3be2f19b">pcv::add</a></div><div class="ttdeci">auto add(const cv::Mat &amp;other, const cv::Scalar &amp;alpha=cv::Scalar(1.0), const cv::Scalar &amp;beta=cv::Scalar(1.0), const cv::Scalar &amp;gamma=cv::Scalar(0.0))</div><div class="ttdoc">Weighted sum: alpha * in + beta * other + gamma.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00347">PipelineCv.h:347</a></div></div>
+<div class="ttc" id="agroup__elementwise__operations_html_gaedc43d4473bb033c7f6761be3be2f19b"><div class="ttname"><a href="group__elementwise__operations.html#gaedc43d4473bb033c7f6761be3be2f19b">pcv::add</a></div><div class="ttdeci">auto add(const cv::Mat &amp;other, const cv::Scalar &amp;alpha=cv::Scalar(1.0), const cv::Scalar &amp;beta=cv::Scalar(1.0), const cv::Scalar &amp;gamma=cv::Scalar(0.0))</div><div class="ttdoc">Weighted sum: alpha * in + beta * other + gamma.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00513">PipelineCv.h:513</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00347">pcv::add()</a>.</p>
+<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00513">pcv::add()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -286,6 +292,233 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ga5fdbf39fb9fc0831289048994a7ba5bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5fdbf39fb9fc0831289048994a7ba5bb">&#9670;&nbsp;</a></span>histogram_equalize_stretch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto pcv::histogram_equalize_stretch </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>per_channel</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Histogram equalization for contrast enhancement. </p>
+<p>Works on grayscale or color images (3-channel). For color inputs, performs per-channel equalization or luminance-based equalization in YCrCb space.</p>
+<p>Supports CV_8U, CV_16U, and CV_32F inputs. Output retains same type/depth. For float data, values are assumed in [0, 1] and scaled to 8-bit internally.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">per_channel</td><td>Apply equalization independently to each channel (default is true). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Callable that performs histogram equalization. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00441">441</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                                                                {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    CV_Assert(in.channels() == 1 || in.channels() == 3);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    CV_Assert(in.depth() == CV_8U || in.depth() == CV_16U ||</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;              in.depth() == CV_32F);</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160; </div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="keyword">auto</span> equalize_single_channel = [](<span class="keyword">const</span> cv::Mat&amp; ch) -&gt; cv::Mat {</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;      cv::Mat ch8u, eq;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;      <span class="keywordflow">if</span> (ch.depth() == CV_8U)</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        ch8u = ch;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch.depth() == CV_16U)</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        ch.convertTo(ch8u, CV_8U, 1.0 / 256.0);  <span class="comment">// scale 16U → 8U</span></div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch.depth() == CV_32F)</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        ch.convertTo(ch8u, CV_8U, 255.0);  <span class="comment">// assume [0,1] float</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;      cv::equalizeHist(ch8u, eq);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;      <span class="comment">// Convert back to original type</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;      cv::Mat out;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;      <span class="keywordflow">if</span> (ch.depth() == CV_8U)</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        out = eq;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch.depth() == CV_16U)</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        eq.convertTo(out, CV_16U, 256.0);  <span class="comment">// scale 8U → 16U</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch.depth() == CV_32F)</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        eq.convertTo(out, CV_32F, 1.0 / 255.0);  <span class="comment">// scale 8U → float</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;      <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    };</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160; </div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <span class="comment">// Grayscale</span></div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="keywordflow">if</span> (in.channels() == 1) <span class="keywordflow">return</span> equalize_single_channel(in);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160; </div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    <span class="comment">// Color (3-channel)</span></div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    std::vector&lt;cv::Mat&gt; ch;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    cv::split(in, ch);</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160; </div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    <span class="keywordflow">if</span> (per_channel) {</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; c : ch) c = equalize_single_channel(c);</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;      cv::Mat out;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;      cv::merge(ch, out);</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;      <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;      <span class="comment">// Luminance equalization in YCrCb space</span></div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;      cv::Mat ycrcb, eq_ycrcb;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;      cv::cvtColor(in, ycrcb, cv::COLOR_BGR2YCrCb);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;      std::vector&lt;cv::Mat&gt; ych;</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;      cv::split(ycrcb, ych);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;      ych[0] = equalize_single_channel(ych[0]);  <span class="comment">// equalize Y only</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;      cv::merge(ych, eq_ycrcb);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;      cv::Mat out;</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;      cv::cvtColor(eq_ycrcb, out, cv::COLOR_YCrCb2BGR);</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;      <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    }</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;  };</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga203d40a1485bcbc251d6a70a8b00c31d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga203d40a1485bcbc251d6a70a8b00c31d">&#9670;&nbsp;</a></span>linear_contrast_stretch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto pcv::linear_contrast_stretch </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>lower_percent</em> = <code>2.0f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>upper_percent</em> = <code>98.0f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>per_channel</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Contrast stretch using histogram percentiles. </p>
+<p>Linearly maps intensities so that <code>lower_percent</code> of values are clipped to black and <code>upper_percent</code> to white. Works on grayscale or color images, supporting 8U, 16U, and 32F depths.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lower_percent</td><td>Lower tail cutoff (percentage) </td></tr>
+    <tr><td class="paramname">upper_percent</td><td>Upper tail cutoff (percentage) </td></tr>
+    <tr><td class="paramname">per_channel</td><td>Stretch each channel independently (else luminance-based) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Callable performing contrast stretch. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00345">345</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                                                             {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    CV_Assert(in.channels() == 1 || in.channels() == 3);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    CV_Assert(in.depth() == CV_8U || in.depth() == CV_16U ||</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;              in.depth() == CV_32F);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> bins = (in.depth() == CV_8U)    ? 256</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                     : (in.depth() == CV_16U) ? 65536</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                                              : 65536;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> range[] = {0.0f, <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(bins)};</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span>* histRange = {range};</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keyword">auto</span> stretch_channel = [&amp;](<span class="keyword">const</span> cv::Mat&amp; ch) {</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;      cv::Mat hist;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      cv::calcHist(&amp;ch, 1, 0, cv::Mat(), hist, 1, &amp;bins, &amp;histRange, <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                   <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;      std::vector&lt;float&gt; cdf(bins);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;      cdf[0] = hist.at&lt;<span class="keywordtype">float</span>&gt;(0);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; bins; ++i) cdf[i] = cdf[i - 1] + hist.at&lt;<span class="keywordtype">float</span>&gt;(i);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;      <span class="keywordtype">float</span> total = cdf.back();</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;      <span class="keywordtype">float</span> lo_thresh = lower_percent / 100.0f * total;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;      <span class="keywordtype">float</span> hi_thresh = upper_percent / 100.0f * total;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;      <span class="keywordtype">int</span> lo = 0, hi = bins - 1;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; bins; ++i)</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keywordflow">if</span> (cdf[i] &gt;= lo_thresh) {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;          lo = i;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        }</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = bins - 1; i &gt;= 0; --i)</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="keywordflow">if</span> (cdf[i] &lt;= hi_thresh) {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;          hi = i;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;      cv::Mat out;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;      <span class="keywordflow">if</span> (in.depth() == CV_32F) {</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        out = (ch - float(lo)) / <span class="keywordtype">float</span>(hi - lo);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        cv::min(cv::max(out, 0.0f), 1.0f, out);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordtype">double</span> scale = (hi == lo) ? 1.0 : <span class="keywordtype">double</span>(bins - 1) / (hi - lo);</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        ch.convertTo(out, ch.type(), scale, -lo * scale);</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        cv::threshold(out, out, bins - 1, bins - 1, cv::THRESH_TRUNC);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        cv::threshold(out, out, 0, 0, cv::THRESH_TOZERO);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;      }</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    };</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">if</span> (in.channels() == 1) <span class="keywordflow">return</span> stretch_channel(in);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    std::vector&lt;cv::Mat&gt; ch;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    cv::split(in, ch);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keywordflow">if</span> (per_channel) {</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; c : ch) c = stretch_channel(c);</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;      <span class="comment">// Luminance approach</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;      cv::Mat lum;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;      cv::cvtColor(in, lum, cv::COLOR_BGR2GRAY);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;      cv::Mat stretch_lum = stretch_channel(lum);</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;      std::vector&lt;cv::Mat&gt; ch_f(3);</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; ++i) ch[i].convertTo(ch_f[i], CV_32F);</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;      cv::Mat lum_f, stretch_f;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;      lum.convertTo(lum_f, CV_32F);</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;      stretch_lum.convertTo(stretch_f, CV_32F);</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;      cv::Mat ratio = stretch_f / (lum_f + 1e-6f);</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; ++i) ch_f[i] = ch_f[i].mul(ratio);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; ++i) ch_f[i].convertTo(ch[i], in.depth());</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    }</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    cv::merge(ch, out);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  };</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="gabbe5f90c2931e9c23dd99fd0a50ba004"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gabbe5f90c2931e9c23dd99fd0a50ba004">&#9670;&nbsp;</a></span>log()</h2>
 
@@ -323,7 +556,7 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;}</div>
 <div class="ttc" id="agroup__scalar__value__transforms_html_gabbe5f90c2931e9c23dd99fd0a50ba004"><div class="ttname"><a href="group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004">pcv::log</a></div><div class="ttdeci">auto log()</div><div class="ttdoc">Natural logarithm of (in + 1).</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00300">PipelineCv.h:300</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="PipelineCv_8h_source.html#l00492">pcv::power_spectrum()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="PipelineCv_8h_source.html#l00658">pcv::power_spectrum()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -488,9 +721,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> out;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  };</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
-<div class="ttc" id="agroup__elementwise__operations_html_ga0bb1b2b9ae7f9b0f8267ccc2610e78f6"><div class="ttname"><a href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">pcv::subtract</a></div><div class="ttdeci">auto subtract(const cv::Mat &amp;other, double scale=1.0)</div><div class="ttdoc">Element-wise subtraction: in - other, with optional scaling.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00366">PipelineCv.h:366</a></div></div>
+<div class="ttc" id="agroup__elementwise__operations_html_ga0bb1b2b9ae7f9b0f8267ccc2610e78f6"><div class="ttname"><a href="group__elementwise__operations.html#ga0bb1b2b9ae7f9b0f8267ccc2610e78f6">pcv::subtract</a></div><div class="ttdeci">auto subtract(const cv::Mat &amp;other, double scale=1.0)</div><div class="ttdoc">Element-wise subtraction: in - other, with optional scaling.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00532">PipelineCv.h:532</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00366">pcv::subtract()</a>.</p>
+<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00532">pcv::subtract()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['normalize_20',['normalize',['../group__scalar__value__transforms.html#gada98064c858990633209129d89811b49',1,'pcv']]]
+  ['magnitude_19',['magnitude',['../group__complex__domain__operations.html#ga2c726c851531e8352d679109cbe5a8da',1,'pcv']]],
+  ['multiply_20',['multiply',['../group__elementwise__operations.html#ga10b0303f9b7b8ba2b9803747c0ff6554',1,'pcv']]],
+  ['multiply_5fscalar_21',['multiply_scalar',['../group__scalar__value__transforms.html#ga135d45c8988988f4eb32b6350a4c284c',1,'pcv']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['log_60',['log',['../group__scalar__value__transforms.html#gabbe5f90c2931e9c23dd99fd0a50ba004',1,'pcv']]]
+  ['idft_62',['idft',['../group__fourier__frequency__domain__utilities.html#ga5da2c3c5152ea2cdc9cb78a56c95a136',1,'pcv']]],
+  ['imag_63',['imag',['../group__type__and__channel__adapters.html#ga06bab21407dca52598cd41a557d152b0',1,'pcv']]]
 ];

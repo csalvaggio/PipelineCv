@@ -143,17 +143,17 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable performing DFT. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00599">599</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;                               {</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    <a class="code" href="group__fourier__frequency__domain__utilities.html#ga459e360dfb8e5614bf654161ee9c2ccf">cv::dft</a>(in, out, flags | cv::DFT_COMPLEX_OUTPUT);</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;  };</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;}</div>
-<div class="ttc" id="agroup__fourier__frequency__domain__utilities_html_ga459e360dfb8e5614bf654161ee9c2ccf"><div class="ttname"><a href="group__fourier__frequency__domain__utilities.html#ga459e360dfb8e5614bf654161ee9c2ccf">pcv::dft</a></div><div class="ttdeci">auto dft(int flags=0)</div><div class="ttdoc">Discrete Fourier Transform producing complex output.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00599">PipelineCv.h:599</a></div></div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00765">765</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                               {</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    <a class="code" href="group__fourier__frequency__domain__utilities.html#ga459e360dfb8e5614bf654161ee9c2ccf">cv::dft</a>(in, out, flags | cv::DFT_COMPLEX_OUTPUT);</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;  };</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;}</div>
+<div class="ttc" id="agroup__fourier__frequency__domain__utilities_html_ga459e360dfb8e5614bf654161ee9c2ccf"><div class="ttname"><a href="group__fourier__frequency__domain__utilities.html#ga459e360dfb8e5614bf654161ee9c2ccf">pcv::dft</a></div><div class="ttdeci">auto dft(int flags=0)</div><div class="ttdoc">Discrete Fourier Transform producing complex output.</div><div class="ttdef"><b>Definition:</b> <a href="PipelineCv_8h_source.html#l00765">PipelineCv.h:765</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="PipelineCv_8h_source.html#l00619">pcv::idft()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="PipelineCv_8h_source.html#l00785">pcv::idft()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -189,26 +189,26 @@ Here is the caller graph for this function:</div>
 <p>Works on 2-dimensional cv::Mats (even dimensions recommended).</p>
 <dl class="section return"><dt>Returns</dt><dd>Callable performing quadrant swaps (Q0&lt;-&gt;Q3 and Q1&lt;-&gt;Q2). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00637">637</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;                        {</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    cv::Mat out = in.clone();</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    <span class="keywordtype">int</span> cx = out.cols / 2;</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    <span class="keywordtype">int</span> cy = out.rows / 2;</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    cv::Mat q0(out, cv::Rect(0, 0, cx, cy));</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    cv::Mat q1(out, cv::Rect(cx, 0, cx, cy));</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    cv::Mat q2(out, cv::Rect(0, cy, cx, cy));</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    cv::Mat q3(out, cv::Rect(cx, cy, cx, cy));</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    cv::Mat tmp;</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    q0.copyTo(tmp);</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    q3.copyTo(q0);</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    tmp.copyTo(q3);</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    q1.copyTo(tmp);</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    q2.copyTo(q1);</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    tmp.copyTo(q2);</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;  };</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00803">803</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;                        {</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;    cv::Mat out = in.clone();</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;    <span class="keywordtype">int</span> cx = out.cols / 2;</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;    <span class="keywordtype">int</span> cy = out.rows / 2;</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;    cv::Mat q0(out, cv::Rect(0, 0, cx, cy));</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;    cv::Mat q1(out, cv::Rect(cx, 0, cx, cy));</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;    cv::Mat q2(out, cv::Rect(0, cy, cx, cy));</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;    cv::Mat q3(out, cv::Rect(cx, cy, cx, cy));</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;    cv::Mat tmp;</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    q0.copyTo(tmp);</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    q3.copyTo(q0);</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;    tmp.copyTo(q3);</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;    q1.copyTo(tmp);</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;    q2.copyTo(q1);</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    tmp.copyTo(q2);</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;  };</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -246,16 +246,16 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Callable performing the inverse DFT. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00619">619</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                                          {</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    <a class="code" href="group__fourier__frequency__domain__utilities.html#ga459e360dfb8e5614bf654161ee9c2ccf">cv::dft</a>(in, out, flags | cv::DFT_INVERSE | cv::DFT_REAL_OUTPUT);</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;  };</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00785">785</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                                          {</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;  <span class="keywordflow">return</span> [=](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;    <a class="code" href="group__fourier__frequency__domain__utilities.html#ga459e360dfb8e5614bf654161ee9c2ccf">cv::dft</a>(in, out, flags | cv::DFT_INVERSE | cv::DFT_REAL_OUTPUT);</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;  };</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00599">pcv::dft()</a>.</p>
+<p class="reference">References <a class="el" href="PipelineCv_8h_source.html#l00765">pcv::dft()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -291,18 +291,18 @@ Here is the call graph for this function:</div>
 <p>If both dimensions are already even, the input is returned unchanged.</p>
 <dl class="section return"><dt>Returns</dt><dd>Callable producing an even-sized image via right/bottom padding. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00578">578</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;                          {</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    <span class="keywordtype">int</span> newRows = (in.rows % 2 == 0) ? in.rows : in.rows + 1;</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    <span class="keywordtype">int</span> newCols = (in.cols % 2 == 0) ? in.cols : in.cols + 1;</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    <span class="keywordflow">if</span> (newRows == in.rows &amp;&amp; newCols == in.cols) <span class="keywordflow">return</span> in;</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    cv::Mat out;</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    cv::copyMakeBorder(in, out, 0, newRows - in.rows, 0, newCols - in.cols,</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;                       cv::BORDER_CONSTANT, cv::Scalar(0));</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;  };</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="PipelineCv_8h_source.html#l00744">744</a> of file <a class="el" href="PipelineCv_8h_source.html">PipelineCv.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                          {</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;  <span class="keywordflow">return</span> [](<span class="keyword">const</span> cv::Mat&amp; in) {</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    <span class="keywordtype">int</span> newRows = (in.rows % 2 == 0) ? in.rows : in.rows + 1;</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;    <span class="keywordtype">int</span> newCols = (in.cols % 2 == 0) ? in.cols : in.cols + 1;</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    <span class="keywordflow">if</span> (newRows == in.rows &amp;&amp; newCols == in.cols) <span class="keywordflow">return</span> in;</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;    cv::Mat out;</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;    cv::copyMakeBorder(in, out, 0, newRows - in.rows, 0, newCols - in.cols,</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                       cv::BORDER_CONSTANT, cv::Scalar(0));</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;  };</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

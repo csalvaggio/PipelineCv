@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['warp_5faffine_79',['warp_affine',['../group__spatial__utilities.html#ga1401b3b2472995bb2ebc75e507eae033',1,'pcv']]],
-  ['warp_5fpolar_80',['warp_polar',['../group__spatial__utilities.html#gaa83d2f2c1972dbc934d6834bf0be1fd0',1,'pcv']]]
+  ['to_5fcomplex_79',['to_complex',['../group__type__and__channel__adapters.html#ga4221a2e4f9b90c3801a5757786b63610',1,'pcv']]],
+  ['to_5fdouble_80',['to_double',['../group__type__and__channel__adapters.html#ga54af8fda962fb70e1d8b39ff4e8c31a9',1,'pcv']]],
+  ['to_5ffloat_81',['to_float',['../group__type__and__channel__adapters.html#ga1017b7312073871b14b3d95f4678afc1',1,'pcv']]],
+  ['to_5fgray_82',['to_gray',['../group__type__and__channel__adapters.html#ga1eaf2bddd565ca2685bf50de5afa166d',1,'pcv']]],
+  ['to_5fuint8_83',['to_uint8',['../group__type__and__channel__adapters.html#ga3af12c29a08fd9d71ecef5ac80406581',1,'pcv']]]
 ];
