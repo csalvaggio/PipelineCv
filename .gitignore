@@ -2,4 +2,4 @@
 build
 *SAVE
 *ORIG
-update_docs.sh
+push_docs.sh
